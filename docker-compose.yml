@@ -1,0 +1,13 @@
+version: '3'
+services:
+  server:
+    image: aredli/judo-club-wallers-backend
+    restart: always
+    ports:
+      - 3000:3000
+
+  client:
+    image: aredli/judo-club-wallers-frontend
+    restart: always
+    ports:
+      - 80:8080
