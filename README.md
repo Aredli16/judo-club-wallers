@@ -8,33 +8,29 @@
 [_docker-compose.yml_](docker-compose.yml)
 
 ```
-
 services:
 
-server:
+  server:
 
-image: aredli/judo-club-wallers-backend
+    image: aredli/judo-club-wallers-backend
 
-restart: always
+    restart: always
 
-ports:
+    ports:
 
-- 3000:3000
-
-  
-
-client:
-
-image: aredli/judo-club-wallers-frontend
-
-restart: always
-
-ports:
-
-- 80:8080
+      - 3000:3000
 
   
 
+  client:
+
+    image: aredli/judo-club-wallers-frontend
+
+    restart: always
+
+    ports:
+
+      - 80:8080
 ```
 
   
@@ -51,7 +47,6 @@ The server uses the **firebase admin SDK**. It is therefore necessary to define 
   
 
 ```
-
 TYPE=
 
 PROJECT_ID=
@@ -71,7 +66,6 @@ TOKEN_URI=
 AUTH_PROVIDER_X509_CERT_URL=
 
 CLIENT_X509_CERT_URL=
-
 ```
 
 If you do not create the file and do not define each of the variables, an error will be returned to you:
