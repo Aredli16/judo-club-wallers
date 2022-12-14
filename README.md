@@ -4,7 +4,7 @@ Judo Club Wallers website
 
 ## Requirements 🚨
 
-`PHP 8` and `Composer`
+`PHP 8`, `Composer` and `Docker`
 
 ## Built With
 
@@ -23,6 +23,7 @@ $ composer install
 ### Run locally
 
 ```bash
+$  docker compose up # Launch database
 $  symfony server:start
 ```
 
