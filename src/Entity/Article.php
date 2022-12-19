@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Article
 {
     #[ORM\Id]
@@ -26,12 +29,15 @@ class Article
     #[ORM\Column(type: Types::BLOB)]
     private $image = null;
 
-    #[ORM\Column]
+    #[ORM\Column (options:["default"=>"CURRENT_TIMESTAMP"])]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    public function __construct(private readonly SluggerInterface $slugger){
+        $this->created_at = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -114,5 +120,18 @@ class Article
         $this->slug = $slug;
 
         return $this;
+    }
+
+    #[ORM\PostPersist]
+    public function postPersist(LifecycleEventArgs $args): void
+    {  
+        $entity = $args->getObject();
+        if (!$entity instanceof Article) {
+            return;
+        }
+        $entity->setSlug($this->slugger->slug($entity->getTitle() . " " . (string) $entity->getId())->lower());
+        $entityManager = $args->getObjectManager();
+        $entityManager->persist($entity);
+        $entityManager->flush();
     }
 }

@@ -8,7 +8,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class AppFixtures extends Fixture
 {
@@ -24,14 +23,12 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
 
         for ($i=0; $i < 10; $i++) { 
-            $article = new Article();
-            $article->setId(rand(1,100));
+            $article = new Article($this->slugger);
             $article->setContent($faker->text() . "'s Article");
             $article->setAuthor($faker->firstName() . $faker->lastName());
             $article->setTitle($faker->firstName(). " " . $article->getAuthor());
+            $article->setSlug($faker->slug());
             $article->setImage("imgTest");
-            $article->setCreatedAt(new DateTimeImmutable($faker->date()));
-            $article->setSlug(strtolower($this->slugger->slug($article->getTitle())) . "-" . $article->getId());
             $manager->persist($article);
         }
         $manager->flush();
