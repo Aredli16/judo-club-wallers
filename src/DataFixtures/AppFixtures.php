@@ -31,7 +31,6 @@ class AppFixtures extends Fixture
             $article->setTitle($faker->firstName(). " " . $article->getAuthor());
             $article->setImage("imgTest");
             $article->setCreatedAt(new DateTimeImmutable($faker->date()));
-            $article->setSlug(strtolower($this->slugger->slug($article->getTitle())) . "-");
             $article->setSlug(strtolower($this->slugger->slug($article->getTitle())) . "-" . $article->getId());
             $manager->persist($article);
         }
