@@ -24,10 +24,10 @@
 
 <div class="example-wrapper">
     {% for article in articles %}
-    <a href={{path('show.article', {'id': article.getId()})}}>
+    <a href={{path('show.article', {'slug': article.getSlug()})}}>
         <div class="container">
             <h1>Titre:{{article.getTitle()}}</h1>
-            <h1>Content : {{article.getContent()}}</h1>
+            <p>Content : {{article.getContent()}}</p>
             <h2>Authors: {{article.getAuthor()}}</h2>
             <h3>created at: {{article.getCreatedAt().format('d-m-Y à H:i')}}</h3>
             <h4>slug:{{article.getSlug()}}</h4>
@@ -35,7 +35,6 @@
         </div>
     </a>
     <hr>
-
     {% endfor %}
 </div>
 {% endblock %}

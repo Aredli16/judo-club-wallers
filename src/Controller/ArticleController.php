@@ -17,11 +17,9 @@ class ArticleController extends AbstractController
         return $this->render('articles/index.html.twig', ['articles' => $articles]);
     }
 
-    #[Route('/article/{id}', name: 'show.article')]
-    public function showArticle(ManagerRegistry $doctrine, $id): Response
+    #[Route('/article/{slug}', name: 'show.article')]
+    public function showArticle(Article $article): Response
     {
-        $article = $doctrine->getRepository(Article::class)->find($id);
-        return $this->render('article/index.html.twig', ['article' => $article]);
+        return $this->render('articles/show.html.twig', ['article' => $article]);
     }
-
 }
