@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
 
         for ($i=0; $i < 10; $i++) { 
-            $article = new Article($this->slugger);
+            $article = new Article();
             $article->setContent($faker->text() . "'s Article");
             $article->setAuthor($faker->firstName() . $faker->lastName());
             $article->setTitle($faker->firstName(). " " . $article->getAuthor());
