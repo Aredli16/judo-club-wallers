@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
-use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -26,9 +25,14 @@ class AppFixtures extends Fixture
             $article = new Article();
             $article->setContent($faker->text() . "'s Article");
             $article->setAuthor($faker->firstName() . $faker->lastName());
-            $article->setTitle($faker->firstName(). " " . $article->getAuthor());
             $article->setSlug($faker->slug());
             $article->setImage("imgTest");
+            if($i == 0){
+                $article->setTitle("Coco le petit fou");
+
+            }else{
+                $article->setTitle($faker->firstName(). " " . $article->getAuthor());
+            }
             $manager->persist($article);
         }
         $manager->flush();
