@@ -57,11 +57,6 @@ class Image
         return $this;
     }
 
-    public function getPath(): string
-    {
-        return '/uploads/media/images/' . $this->getName();
-    }
-
     public function getName(): ?string
     {
         return $this->name;

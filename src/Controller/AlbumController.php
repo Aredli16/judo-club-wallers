@@ -85,6 +85,10 @@ class AlbumController extends AbstractController
     public function delete(Request $request, Album $album, AlbumRepository $albumRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $album->getId(), $request->request->get('_token'))) {
+            foreach ($album->getPhotos() as $photo) {
+                unlink($this->getParameter('images_directory') . '/' . $photo->getName());
+            }
+
             $albumRepository->remove($album, true);
         }
 

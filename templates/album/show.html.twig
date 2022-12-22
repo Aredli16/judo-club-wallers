@@ -34,6 +34,6 @@
 
 
     {% for photo in album.photos %}
-        <img src="{{ photo.getPath }}" alt="">
+        <img src="{{ asset('uploads/media/images/' ~ photo.getName ) }}" alt="">
     {% endfor %}
 {% endblock %}

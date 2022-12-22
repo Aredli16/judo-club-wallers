@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\All;
+use Symfony\Component\Validator\Constraints\File;
 
 class AlbumType extends AbstractType
 {
@@ -16,7 +18,19 @@ class AlbumType extends AbstractType
             ->add('title')
             ->add('photos', FileType::class, [
                 'mapped' => false,
-                'multiple' => true
+                'multiple' => true,
+                'attr' => [
+                    'accept' => 'image/*'
+                ],
+                'constraints' => [
+                    new All([
+                        new File([
+                            'maxSize' => '1024k',
+                            'mimeTypes' => ['image/*'],
+                            'mimeTypesMessage' => 'Veuillez sélectionner uniquement des fichiers images'
+                        ])
+                    ])
+                ],
             ]);
     }
 
