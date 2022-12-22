@@ -57,10 +57,6 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $article->setTitle($form->get('title')->getData());
-            $article->setContent($form->get('content')->getData());
-            $article->setImage($form->get('image')->getData());
-            $article->setAuthor($form->get('author')->getData());
             $articleRepository->save($article, true);
             return $this->redirectToRoute('show.articles', []);
         }
