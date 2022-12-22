@@ -33,8 +33,8 @@ class AlbumController extends AbstractController
             $photos = $form->get('photos')->getData();
 
             foreach ($photos as $photo) {
-                $image = new Image();
-                $image->setName(md5(uniqid()) . '.' . $photo->guessExtension());
+                $image = (new Image())
+                    ->setName(md5(uniqid()) . '.' . $photo->guessExtension());
 
                 $photo->move(
                     $this->getParameter('images_directory'),
