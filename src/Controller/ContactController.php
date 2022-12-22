@@ -24,7 +24,12 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
-            $service->sendEmail($data['email'],$data['subject'],$data['message']);
+            if($data['fichierjoindre'] != ""){
+                $service->sendEmailWithPieceJoin($data['email'],$data['subject'],$data['message'],$data['fichierjoindre']);
+            }
+            else{
+                $service->sendEmail($data['email'],$data['subject'],$data['message']);
+            }
         }
 
 

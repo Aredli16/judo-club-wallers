@@ -20,4 +20,13 @@ class EmailService
             ->text($message);
         $this->mailer->send($email);
     }
+    public function sendEmailWithPieceJoin($from,$subject,$message,$file){
+        $email = (new TemplatedEmail())
+            ->from($from)
+            ->to('no-reply@judo-club-wallers.fr')
+            ->subject($subject)
+            ->text($message)
+            ->attachFromPath($file);
+        $this->mailer->send($email);
+    }
 }
