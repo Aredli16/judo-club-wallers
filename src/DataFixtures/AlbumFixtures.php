@@ -7,6 +7,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
+/**
+ * @codeCoverageIgnore
+ */
 class AlbumFixtures extends Fixture
 {
     const GENERATE_ALBUM = 5;

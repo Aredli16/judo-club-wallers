@@ -8,6 +8,9 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ImageFixtures extends Fixture
 {
     const GENERATE_IMAGE = AlbumFixtures::GENERATE_ALBUM * 3;

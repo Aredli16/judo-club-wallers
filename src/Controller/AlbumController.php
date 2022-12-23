@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/album')]
 class AlbumController extends AbstractController
 {
-    #[Route('/', name: 'app_album_index', methods: ['GET'])]
+    #[Route('', name: 'app_album_index', methods: ['GET'])]
     public function index(AlbumRepository $albumRepository): Response
     {
         return $this->render('album/index.html.twig', [
