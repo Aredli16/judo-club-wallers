@@ -45,8 +45,6 @@ jobs:
         run: |
           php bin/console doctrine:database:create --env=test
           php bin/console doctrine:migration:migrate --env=test
-        env:
-          DATABASE_URL: mysql://root:@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/judo-club-wallers
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
   security-checker:
