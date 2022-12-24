@@ -61,6 +61,15 @@ class ArticleRepositoryTest extends KernelTestCase
         $this->assertEquals($test->getAuthor(), $this->entityManager->getRepository(Article::class)->find($test->getId())->getAuthor());
     }
 
+    public function testRemoveValue(){
+        self::bootKernel();
+        $articles = $this->entityManager->getRepository(Article::class)->findAll();
+        $nbArticles = count($articles);
+        $this->entityManager->getRepository(Article::class)->remove($articles[rand(0, $nbArticles - 1)], true);
+        $articles = $this->entityManager->getRepository(Article::class)->findAll();
+        $this->assertEquals($nbArticles - 1, count($articles));
+    }
+
     public function testPostPersist()
     {
         self::bootKernel();
