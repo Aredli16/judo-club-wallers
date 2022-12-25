@@ -21,4 +21,8 @@
 
 ###> IDE
 .idea
-###>
+###<
+
+###> Upload file
+public/uploads
+###<
