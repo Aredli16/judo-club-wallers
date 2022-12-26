@@ -1,4 +1,6 @@
-<?php namespace App\EventListener;
+<?php
+
+namespace App\EventListener;
 
 use App\Entity\Article;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
@@ -8,19 +10,12 @@ class ArticleListener
 {
     public function __construct(private readonly SluggerInterface $slugger)
     {
-        
+
     }
-    
-    public function postPersist(LifecycleEventArgs $args): void
-    {  
-        $entity = $args->getObject();
-        if (!$entity instanceof Article) {
-            return;
-        }
-        $entity->setSlug($this->slugger->slug($entity->getTitle() . " " . (string) $entity->getId())->lower());
-        $entityManager = $args->getObjectManager();
-        $entityManager->persist($entity);
-        $entityManager->flush();
+
+    public function postPersist(Article $article, LifecycleEventArgs $args): void
+    {
+        $article->setSlug($this->slugger->slug($article->getTitle() . " " . $article->getId())->lower());
+        $args->getObjectManager()->getRepository(Article::class)->save($article, true);
     }
 }
-?>

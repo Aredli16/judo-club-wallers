@@ -7,6 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -15,8 +18,7 @@ class ArticleType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('image')
-            ->add('author')
-        ;
+            ->add('author');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

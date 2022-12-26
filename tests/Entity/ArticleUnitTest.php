@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Entity;
 
 use App\Entity\Article;
 use DateTimeImmutable;
@@ -23,16 +23,17 @@ class ArticleUnitTest extends TestCase
         $test = new Article();
         $test->setId(1);
         $test->setTitle("test_title");
-        $this->assertEquals("test_title", $test->getTitle());
         $test->setContent("test_content");
-        $this->assertEquals("test_content", $test->getContent());
         $test->setAuthor("test_author");
-        $this->assertEquals("test_author", $test->getAuthor());
         $test->setImage("test_img");
-        $this->assertEquals("test_img", $test->getImage());
         $test->setSlug("test_slug");
-        $this->assertEquals("test_slug", $test->getSlug());
         $test->setCreatedAt(new DateTimeImmutable('2020-01-01'));
+
+        $this->assertEquals("test_title", $test->getTitle());
+        $this->assertEquals("test_content", $test->getContent());
+        $this->assertEquals("test_author", $test->getAuthor());
+        $this->assertEquals("test_img", $test->getImage());
+        $this->assertEquals("test_slug", $test->getSlug());
         $this->assertEquals(new DateTimeImmutable('2020-01-01'), $test->getCreatedAt());
     }
 }

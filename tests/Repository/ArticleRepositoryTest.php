@@ -1,86 +1,60 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Repository;
 
-use App\DataFixtures\AppFixtures;
 use App\Entity\Article;
-use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
-use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;
+use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ArticleRepositoryTest extends KernelTestCase
 {
-    /**
-     * @var AbstractDatabaseTool
-     */
-    protected $databaseTool;
-    private $entityManager;
+    private ArticleRepository $repository;
 
     public function setUp(): void
     {
         parent::setUp();
+        $kernel = self::bootKernel();
 
-        $this->databaseTool = static::getContainer()->get(DatabaseToolCollection::class)->get();
-        $this->entityManager = $this->getContainer()
-            ->get('doctrine')
-            ->getManager();
+        $this->repository = $kernel->getContainer()->get('doctrine')->getManager()->getRepository(Article::class);
     }
 
-    public function testNumberOfItems()
+    public function testInsertValue()
     {
-        self::bootKernel();
-        $this->getContainer()->get('doctrine.orm.entity_manager')->getRepository(Article::class);
-        $this->databaseTool->loadFixtures([
-            AppFixtures::class
-        ]);
-        $nbArticles = $this->getContainer()->get('doctrine.orm.entity_manager')->getRepository(Article::class)->count([]);
-        $this->assertEquals(10, $nbArticles);
+        $test = (new Article())
+            ->setTitle("test_title")
+            ->setContent("test_content")
+            ->setAuthor("test_author")
+            ->setImage("test_img")
+            ->setSlug("test_slug");
+        $this->repository->save($test, true);
+
+        $this->assertEquals($test->getTitle(), $this->repository->find($test->getId())->getTitle());
+        $this->assertEquals($test->getContent(), $this->repository->find($test->getId())->getContent());
+        $this->assertEquals($test->getAuthor(), $this->repository->find($test->getId())->getAuthor());
+        $this->assertEquals($test->getImage(), $this->repository->find($test->getId())->getImage());
+        $this->assertEquals($test->getSlug(), $this->repository->find($test->getId())->getSlug());
     }
 
-    public function testSearchByTitle()
+    public function testRemoveValue()
     {
-        self::bootKernel();
-        $test = $this->entityManager->getRepository(Article::class)->findOneBy(['title' => 'Coco le petit fou']);
-        $this->assertEquals(1, $test->getId());
-    }
-
-    public function testInsertValue(){
-        self::bootKernel();
-        $test = new Article();
-        $test->setTitle("test_title");
-        $test->setContent("test_content");
-        $test->setAuthor("test_author");
-        $test->setImage("test_img");
-        $test->setSlug("test_slug");
-
-        $this->entityManager->persist($test);
-        $this->entityManager->flush();
-        $this->assertEquals($test->getTitle(), $this->entityManager->getRepository(Article::class)->find($test->getId())->getTitle());
-        $this->assertEquals($test->getContent(), $this->entityManager->getRepository(Article::class)->find($test->getId())->getContent());
-        $this->assertEquals($test->getAuthor(), $this->entityManager->getRepository(Article::class)->find($test->getId())->getAuthor());
-    }
-
-    public function testRemoveValue(){
-        self::bootKernel();
-        $articles = $this->entityManager->getRepository(Article::class)->findAll();
+        $articles = $this->repository->findAll();
         $nbArticles = count($articles);
-        $this->entityManager->getRepository(Article::class)->remove($articles[rand(0, $nbArticles - 1)], true);
-        $articles = $this->entityManager->getRepository(Article::class)->findAll();
-        $this->assertEquals($nbArticles - 1, count($articles));
+        $this->repository->remove($articles[rand(0, $nbArticles - 1)], true);
+        $articles = $this->repository->findAll();
+        $this->assertCount($nbArticles - 1, $articles);
     }
 
-    public function testPostPersist()
+    public function testASlugAfterPersist()
     {
-        self::bootKernel();
-        $test = $this->entityManager->getRepository(Article::class)->findOneBy(['title' => 'Coco le petit fou']);
-        $this->assertEquals('coco-le-petit-fou-1', $test->getSlug());
-    }
+        $test = (new Article())
+            ->setTitle("test_title")
+            ->setContent("test_content")
+            ->setAuthor("test_author")
+            ->setImage("test_img");
+        $this->repository->save($test, true);
 
-     protected function tearDown(): void
-     {
-         parent::tearDown();
-         unset($this->databaseTool);
-     }
+        $this->assertEquals('test-title-' . $test->getId(), $this->repository->find($test->getId())->getSlug());
+
+        $this->repository->remove($test, true);
+    }
 }
-?>

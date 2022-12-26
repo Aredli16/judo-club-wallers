@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use Doctrine\Persistence\ManagerRegistry;
-use Monolog\DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ArticleController extends AbstractController
 {
     #[Route('/article', name: 'show.articles', methods: ['GET'])]
@@ -51,7 +52,8 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/new', name: 'new.article', methods: ['GET', 'POST'])]
-    public function new(Request $request, ArticleRepository $articleRepository): Response{
+    public function new(Request $request, ArticleRepository $articleRepository): Response
+    {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);

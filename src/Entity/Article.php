@@ -26,13 +26,14 @@ class Article
     #[ORM\Column(type: Types::BLOB)]
     private $image = null;
 
-    #[ORM\Column (options:["default"=>"CURRENT_TIMESTAMP"])]
-    private ?\DateTimeImmutable $created_at = null;
+    #[ORM\Column (options: ["default" => "CURRENT_TIMESTAMP"])]
+    private ?\DateTimeImmutable $created_at;
 
     #[ORM\Column(length: 255)]
-    private ?string $slug = null;
+    private ?string $slug;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->created_at = new \DateTimeImmutable();
         $this->slug = 'default';
     }
