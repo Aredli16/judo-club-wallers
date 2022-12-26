@@ -11,7 +11,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 /**
  * @codeCoverageIgnore
  */
-class AppFixtures extends Fixture
+class ArticleFixtures extends Fixture
 {
     protected $slugger;
 
