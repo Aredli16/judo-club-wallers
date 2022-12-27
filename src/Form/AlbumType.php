@@ -2,11 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\Album;
+use App\Entity\Image;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\File;
 
@@ -15,12 +18,15 @@ use Symfony\Component\Validator\Constraints\File;
  */
 class AlbumType extends AbstractType
 {
+    public function __construct(private readonly ParameterBagInterface $parameter)
+    {
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
             ->add('photos', FileType::class, [
-                'mapped' => false,
+                'label' => false,
                 'multiple' => true,
                 'attr' => [
                     'accept' => 'image/*'
@@ -34,13 +40,26 @@ class AlbumType extends AbstractType
                         ])
                     ])
                 ],
-            ]);
-    }
+            ])
+            ->addModelTransformer(new CallbackTransformer(
+                function ($tagsAsArray) {
+                },
+                function (array $tagsAsString) {
+                    $uploaded_files = $tagsAsString['photos'];
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Album::class,
-        ]);
+                    $images = new ArrayCollection();
+                    /** @var UploadedFile $file */
+                    foreach ($uploaded_files as $file) {
+                        $image = (new Image())
+                            ->setName(md5(uniqid()) . '.' . $file->guessExtension());
+
+                        copy($file->getRealPath(), $this->parameter->get('images_directory') . '/' . $image->getName());
+
+                        $images->add($image);
+                    }
+
+                    return $images;
+                }
+            ));
     }
 }
