@@ -8,9 +8,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\File;
 
-/**
- * @codeCoverageIgnore
- */
 class ContentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
