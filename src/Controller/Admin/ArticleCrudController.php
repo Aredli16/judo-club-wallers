@@ -28,7 +28,7 @@ class ArticleCrudController extends AbstractCrudController
                 ->onlyOnIndex(),
             ImageField::new('image')
                 ->onlyOnForms()
-                ->setUploadDir('public/uploads/media/images/')
+                ->setUploadDir('public/uploads/media/articles/')
         ];
     }
 }

@@ -24,7 +24,7 @@ class ImageFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
-        // Remove all image into upload/media/images folder
+        // Remove all image into upload/media/albums folder
         $this->removeImageFolder();
 
         for ($i = 0; $i <= self::GENERATE_IMAGE; $i++) {
@@ -34,7 +34,7 @@ class ImageFixtures extends Fixture
                 ->setAlbum($this->getReference(rand(0, AlbumFixtures::GENERATE_ALBUM) . '-album'));
 
             $response = $this->client->request('GET', 'https://picsum.photos/200');
-            $fileHandler = fopen('public/uploads/media/images/' . $photo->getName(), 'w');
+            $fileHandler = fopen('public/uploads/media/albums/' . $photo->getName(), 'w');
             foreach ($this->client->stream($response) as $chunk) {
                 fwrite($fileHandler, $chunk->getContent());
             }
@@ -46,7 +46,7 @@ class ImageFixtures extends Fixture
 
     private function removeImageFolder()
     {
-        $files = glob('public/uploads/media/images/*');
+        $files = glob('public/uploads/media/albums/*');
 
         foreach ($files as $file) {
             if (is_file($file)) {
