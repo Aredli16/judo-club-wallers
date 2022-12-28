@@ -14,7 +14,7 @@ class AlbumListener
 
     public function postPersist(Album $album, LifecycleEventArgs $event): void
     {
-        $album->setSlug($this->slugger->slug($album->getTitle() . ' ' . (string)$album->getId())->lower());
+        $album->setSlug($this->slugger->slug($album->getTitle() . ' ' . $album->getId())->lower());
         $event->getObjectManager()->persist($album);
         $event->getObjectManager()->flush();
     }

@@ -2,11 +2,11 @@
 
 namespace App\Controller\Admin\Field;
 
-use App\Controller\Admin\Form\ImageType;
+use App\Controller\Admin\Form\ContentType;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FieldTrait;
 
-class MultipleImageField implements FieldInterface
+class ContentField implements FieldInterface
 {
     use FieldTrait;
 
@@ -16,7 +16,7 @@ class MultipleImageField implements FieldInterface
             ->setProperty($propertyName)
             ->setLabel($label)
             ->setFormTypeOption('label', false)
-            ->setFormType(ImageType::class)
+            ->setFormType(ContentType::class)
             ->onlyOnForms();
     }
 }

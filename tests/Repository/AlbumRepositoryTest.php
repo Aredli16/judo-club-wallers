@@ -3,15 +3,15 @@
 namespace App\Tests\Repository;
 
 use App\Entity\Album;
-use App\Entity\Image;
+use App\Entity\AlbumContent;
+use App\Repository\AlbumContentRepository;
 use App\Repository\AlbumRepository;
-use App\Repository\ImageRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class AlbumRepositoryTest extends KernelTestCase
 {
     private AlbumRepository $albumRepository;
-    private ImageRepository $imageRepository;
+    private AlbumContentRepository $albumContentRepository;
 
     public function testAlbumIsSave()
     {
@@ -51,33 +51,33 @@ class AlbumRepositoryTest extends KernelTestCase
         $this->albumRepository->remove($album, true);
     }
 
-    public function testPhotoIsSaveWithAlbum()
+    public function testContentIsSaveWithAlbum()
     {
-        $photos = $this->imageRepository->findAll();
-        $countPhotos = count($photos);
+        $content = $this->albumContentRepository->findAll();
+        $countContent = count($content);
 
         $album = (new Album())
             ->setTitle('Test album')
-            ->addPhoto((new Image())
-                ->setName('Photo test'));
+            ->addContent((new AlbumContent())
+                ->setFileName('Content test'));
 
         $this->albumRepository->save($album, true);
 
-        $photos = $this->imageRepository->findAll();
-        $this->assertCount($countPhotos + 1, $photos);
+        $content = $this->albumContentRepository->findAll();
+        $this->assertCount($countContent + 1, $content);
     }
 
-    public function testPhotoIsDeleteWithAlbum()
+    public function testContentIsDeleteWithAlbum()
     {
         $albums = $this->albumRepository->findAll();
         $countAlbums = count($albums);
-        $photos = $this->imageRepository->findAll();
-        $countPhotos = count($photos);
+        $content = $this->albumContentRepository->findAll();
+        $countContent = count($content);
 
         $this->albumRepository->remove($albums[rand(0, $countAlbums - 1)], true);
 
-        $photos = $this->imageRepository->findAll();
-        $this->assertCount($countPhotos - 1, $photos);
+        $content = $this->albumContentRepository->findAll();
+        $this->assertCount($countContent - 1, $content);
     }
 
     protected function setUp(): void
@@ -86,6 +86,6 @@ class AlbumRepositoryTest extends KernelTestCase
         $kernel = self::bootKernel();
 
         $this->albumRepository = $kernel->getContainer()->get('doctrine')->getManager()->getRepository(Album::class);
-        $this->imageRepository = $kernel->getContainer()->get('doctrine')->getManager()->getRepository(Image::class);
+        $this->albumContentRepository = $kernel->getContainer()->get('doctrine')->getManager()->getRepository(AlbumContent::class);
     }
 }

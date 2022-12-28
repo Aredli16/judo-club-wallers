@@ -11,12 +11,12 @@ use Symfony\Component\Validator\Constraints\File;
 /**
  * @codeCoverageIgnore
  */
-class ImageType extends AbstractType
+class ContentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('photos', FileType::class, [
+            ->add('content', FileType::class, [
                 'mapped' => false,
                 'multiple' => true,
                 'attr' => [
