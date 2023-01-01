@@ -1,19 +1,208 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang="fr">
+<head>
+    <!-- META -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
+    <meta name="robots" content=""/>
+    <meta name="description" content=""/>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <!-- FAVICONS ICON -->
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}"/>
+    <!-- PAGE TITLE HERE -->
+    <title>Judo Club Wallers</title>
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/templete.css') }}">
+    <!-- Revolution Slider Css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/css/settings.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/css/layers.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/css/navigation.css') }}">
+</head>
+<body>
+<!-- Main Header -->
+<header class="header mo-left">
+    <!-- Main Bar -->
+    <nav class="navbar navbar-expand-lg btco-hover-menu" id="navbar">
+        <div class="container">
+            <!-- Header Logo -->
+            <div class="header-logo logo-cruv">
+                <a class="navbar-brand " href="{{ path('app_home') }}">
+                    <img class="img-thumbnail" src="{{ asset('images/logo.png') }}"/>
+                </a>
+            </div>
+            <!-- Menu Toggle -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Nav Bar -->
+            <div class="collapse navbar-collapse navbar-item" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_about') }}">Le club</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_article') }}">Actualité</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_album') }}">Photos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_contact') }}">Nous contacter</a></li>
+                </ul>
+            </div>
+
+            <!-- extra-nav -->
+            <div class="nav-block">
+                <div class="search-block">
+                    <div class="full-search-bar">
+                        <a href="#" class="search-close flaticon-cancel"></a>
+                        <div class="nav-search-form">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+										<button class="btn btn-link flaticon-magnifying-glass" type="button"></button>
+									</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="flaticon-magnifying-glass search-icon"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Bar End -->
+</header>
+<!-- Header END -->
+{% block body %}{% endblock %}
+
+<footer class="main-footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-md-4 col-sm-4">
+                    <div class="widget">
+                        <h4 class="m-b15 text-white">JKids</h4>
+                        <ul class="widget_list">
+                            <li><a href="#">Course Flyover</a></li>
+                            <li><a href="#">Scorecard</a></li>
+                            <li><a href="#">Copa Card</a></li>
+                            <li><a href="#">Scorecard</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-sm-4">
+                    <div class="widget">
+                        <h4 class="m-b15 text-white">Links</h4>
+                        <ul class="widget_list">
+                            <li><a href="#">Course Flyover</a></li>
+                            <li><a href="#">Scorecard</a></li>
+                            <li><a href="#">Copa Card</a></li>
+                            <li><a href="#">Scorecard</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-sm-4">
+                    <div class="widget">
+                        <h4 class="m-b15 text-white">Events</h4>
+                        <ul class="widget_list">
+                            <li><a href="#">Course Flyover</a></li>
+                            <li><a href="#">Scorecard</a></li>
+                            <li><a href="#">Copa Card</a></li>
+                            <li><a href="#">Scorecard</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="widget">
+                        <h4 class="m-b15 text-white">Contact Us</h4>
+                        <ul class="widget_contact">
+                            <li><i class="fa fa-map-marker"></i> Address: 007 Dummy Address Rd, UK City 40002</li>
+                            <li><i class="fa fa-phone"></i> Phone: 0123-123456 (24/7 Support Line)</li>
+                            <li><i class="fa fa-envelope-o"></i> Email: info@example.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-6">
+                    <div class="widget">
+                        <h4 class="m-b15 text-white">Our Newsletter</h4>
+                        <form class="subscribe-form dzSubscribe" action="script/mailchamp.php" method="post">
+                            <p>Enter your e-mail and subscribe to our newsletter.</p>
+                            <div class="dzSubscribeMsg"></div>
+                            <div class="input-group m-b15">
+                                <input name="dzEmail" required="" class="form-control " placeholder="Enter Your Email"
+                                       type="email">
+                            </div>
+                            <div class="input-group">
+                                <button name="submit" type="submit" value="Submit" class="btn-primary btn btn-block">
+                                    SUBSCRIBE <i class="fa fa-angle-right font-18 m-l10"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col-lg-6">
+                    <p class="m-b0">© Copyright 2020 JKids, Design With <i class="fa fa-heart text-white heart"></i> By
+                        RdxTheme</p>
+                </div>
+                <div class="col-lg-6 text-right ">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JAVASCRIPT  FILES ================ -->
+<script src="{{ asset('js/jquery.min.js') }}"></script><!-- JQUERY.MIN JS -->
+<script src="{{ asset('plugins/bootstrap/js/popper.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{ asset('plugins/bootstrap-menu/js/bootstrap-4-navbar.js') }}"></script><!-- MENU JS -->
+<script src="{{ asset('plugins/aos/aos.js') }}"></script><!-- AOS JS -->
+<script src="{{ asset('plugins/owl-carousel/js/owl.carousel.js') }}"></script><!-- OWL SLIDER -->
+<script src="{{ asset('plugins/counter/waypoints-min.js') }}"></script><!-- WAYPOINTS JS -->
+<script src="{{ asset('plugins/counter/counterup.min.js') }}"></script><!-- COUNTERUP JS -->
+<script src="{{ asset('plugins/magnific-popup/magnific-popup.js') }}"></script><!-- MAGNIFIC POPUP JS -->
+<script src="{{ asset('plugins/gallery-filter/shuffle.js') }}"></script><!-- GALLERY FILTER JS -->
+<script src="{{ asset('plugins/countdown/jquery.countdown.js') }}"></script><!-- JQUERY COUNTDOWN -->
+<script src="{{ asset('js/dz.carousel.js') }}"></script><!-- CAROUSEL JS -->
+<script src="{{ asset('js/custom.js') }}"></script><!-- CUSTOM JS -->
+<script src="{{ asset('js/dz.ajax.js') }}"></script><!-- CONTACT JS  -->
+<!-- revolution JS FILES -->
+<script src="{{ asset('plugins/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+<!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+<script src="{{ asset('js/rev.slider.js') }}"></script>
+<script>
+    jQuery(document).ready(function () {
+        'use strict';
+        dz_rev_slider_2();
+
+    });	/*ready*/
+</script>
+</body>
 </html>
