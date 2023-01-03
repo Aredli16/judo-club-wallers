@@ -18,5 +18,11 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: database
+  mail:
+    image: dockage/mailcatcher
+    restart: always
+    ports:
+      - "1025:1025"
+      - "1080:1080"
 volumes:
   db-data:
