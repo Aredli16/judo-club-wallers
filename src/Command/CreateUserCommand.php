@@ -29,7 +29,8 @@ class CreateUserCommand extends Command
             ->addArgument('email', InputArgument::REQUIRED, 'User email')
             ->addArgument('password', InputArgument::REQUIRED, 'User password ')
             ->addArgument('lastname', InputArgument::REQUIRED, 'User lastname')
-            ->addArgument('firstname', InputArgument::REQUIRED, 'User firstname');
+            ->addArgument('firstname', InputArgument::REQUIRED, 'User firstname')
+            ->addArgument('role', InputArgument::IS_ARRAY, 'User role');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -39,11 +40,14 @@ class CreateUserCommand extends Command
         $password = $input->getArgument('password');
         $lastname = $input->getArgument('lastname');
         $firstname = $input->getArgument('firstname');
+        $role = $input->getArgument('role');
 
         $user = (new User())
             ->setEmail($email)
             ->setLastname($lastname)
-            ->setFirstname($firstname);
+            ->setFirstname($firstname)
+            ->setRoles($role);
+
         $user->setPassword($this->passwordHasher->hashPassword($user, $password));
         $this->userRepository->save($user, true);
 
