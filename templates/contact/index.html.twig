@@ -1,12 +1,155 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-
-    <h1>Formulaire de Contact</h1>
-
-    {{ form(form)}}
-
-
+    <div class="main-content">
+        <!-- Banner -->
+        <section class="banner-area overlay-box">
+            <div class="overlay "></div>
+            <div class="container">
+                <div class="banner-content-area text-white">
+                    <h1>Contact Us 1</h1>
+                    <div class="breadcrumb-block">
+                        <ul class="list-inline">
+                            <li><a href="index.html">Home</a></li>
+                            <li>Contact Us 1</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banner End -->
+        <!-- Our Co -->
+        <section class="section-style-3 contact-style-1">
+            <!-- contact area -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
+                        <div class="border-box p-20 text-center">
+                            <div class="icon m-b15">
+                                <i class="flaticon-placeholder fs-55"></i>
+                            </div>
+                            <div class="content">
+                                <h4>Address</h4>
+                                <p>123 West Street, Melbourne Victoria 3000 Australia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
+                        <div class="border-box p-20 text-center">
+                            <div class="icon m-b15">
+                                <i class="flaticon-message fs-55"></i>
+                            </div>
+                            <div class="content">
+                                <h4>Email</h4>
+                                <p>info@company.com <br> info@industrycompany.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
+                        <div class="border-box p-20 text-center">
+                            <div class="icon m-b15">
+                                <i class="flaticon-technology fs-55"></i>
+                            </div>
+                            <div class="content">
+                                <h4>Phone</h4>
+                                <p>+61 3 8376 6284 <br> +23 123 456 7890</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 m-b30">
+                        <div class="border-box p-20 text-center">
+                            <div class="icon m-b15">
+                                <i class="flaticon-fax fs-55"></i>
+                            </div>
+                            <div class="content">
+                                <h4>Fax</h4>
+                                <p>+61 3 8376 6284 <br> +23 123 456 7890</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Left part start -->
+                    <div class="col-lg-6 d-lg-flex">
+                        <div class="p-30 bg-gray clearfix m-b30 ">
+                            <h3>Send Message Us</h3>
+                            <div class="dzFormMsg"></div>
+                            <form method="post" class="dzForm" action="script/contact.php">
+                                <input type="hidden" value="Contact" name="dzToDo">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input name="dzName" type="text" required class="form-control"
+                                                       placeholder="Your Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input name="dzEmail" type="email" class="form-control" required
+                                                       placeholder="Your Email Id">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input name="dzOther[Phone]" type="text" required class="form-control"
+                                                       placeholder="Phone">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input name="dzOther[Subject]" type="text" required class="form-control"
+                                                       placeholder="Subject">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <textarea name="dzMessage" rows="4" class="form-control" required
+                                                          placeholder="Your Message..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="g-recaptcha" data-sitekey="<!-- Put reCaptcha Site Key -->"
+                                                     data-callback="verifyRecaptchaCallback"
+                                                     data-expired-callback="expiredRecaptchaCallback"></div>
+                                                <input class="form-control d-none" style="display:none;"
+                                                       data-recaptcha="true" required
+                                                       data-error="Please complete the Captcha">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button name="submit" type="submit" value="Submit"
+                                                class="btn btn-primary btn-block"><span>Submit</span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Left part END -->
+                    <div class="col-lg-6 d-lg-flex">
+                        <!-- Map part start -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10177.907131238375!2d3.3935704!3d50.37631!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9985ca123a9e35a!2sJudo%20Ju-Jitsu%20PPG%20Club%20Wallers!5e0!3m2!1sfr!2sfr!4v1672615238406!5m2!1sfr!2sfr"
+                                class="align-self-stretch m-b30" style="border:0; width:100%; min-height:350px;"
+                                allowfullscreen></iframe>
+                        <!-- Map part END -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Our Gallery End -->
+    </div>
 {% endblock %}
