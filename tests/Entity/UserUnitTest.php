@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Entity;
 
 use App\Entity\User;
-use \DateTimeImmutable;
+use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
 class UserUnitTest extends TestCase
@@ -11,23 +11,22 @@ class UserUnitTest extends TestCase
     public function testGettersAndSetters(): void
     {
         $user = new User();
-        $user->setFirstname('firstname');
-        $this->assertEquals('firstname', $user->getFirstname());
         $user->setLastname('lastname');
-        $this->assertEquals('lastname', $user->getLastname());
-        $user->setEmail('test@email.com');
-        $this->assertEquals('test@email.com', $user->getEmail());
         $user->setFirstname('firstname');
-        $this->assertEquals('firstname', $user->getFirstname());
+        $user->setEmail('test@email.com');
         $user->setRoles(['ROLE_TEST']);
-        $this->assertEquals(['ROLE_TEST', 'ROLE_USER'], $user->getRoles());
         $user->setPassword('pswd');
-        $this->assertEquals('pswd', $user->getPassword());
         $user->setAvatar('avatar');
-        $this->assertEquals('avatar', $user->getAvatar());
         $user->setPhoneNumber('000000');
-        $this->assertEquals('000000', $user->getPhoneNumber());
         $user->setCreatedAt(new DateTimeImmutable('2020-01-01'));
+
+        $this->assertEquals('lastname', $user->getLastname());
+        $this->assertEquals('test@email.com', $user->getEmail());
+        $this->assertEquals(['ROLE_TEST', 'ROLE_USER'], $user->getRoles());
+        $this->assertEquals('firstname', $user->getFirstname());
+        $this->assertEquals('pswd', $user->getPassword());
+        $this->assertEquals('avatar', $user->getAvatar());
+        $this->assertEquals('000000', $user->getPhoneNumber());
         $this->assertEquals(new DateTimeImmutable('2020-01-01'), $user->getCreatedAt());
     }
 
@@ -53,7 +52,6 @@ class UserUnitTest extends TestCase
         $this->assertEmpty($user->getLastname());
         $this->assertEmpty($user->getPassword());
         $this->assertEmpty($user->getPhoneNumber());
-
     }
 
     public function testIsNotEmpty(): void

@@ -41,8 +41,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $phone_number = null;
 
-    #[ORM\Column (options:["default"=>"CURRENT_TIMESTAMP"])]
-    private ?\DateTimeImmutable $created_at = null;
+    #[ORM\Column (options: ["default" => "CURRENT_TIMESTAMP"])]
+    private ?\DateTimeImmutable $created_at;
 
     public function __construct()
     {
@@ -74,7 +74,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
