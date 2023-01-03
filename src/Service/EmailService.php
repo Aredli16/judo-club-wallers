@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 
 class EmailService
@@ -12,7 +13,11 @@ class EmailService
 
     }
 
-    public function sendEmail($from,$subject,$message){
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendEmail($from, $subject, $message): void
+    {
         $email = (new TemplatedEmail())
             ->from($from)
             ->to('no-reply@judo-club-wallers.fr')
@@ -20,7 +25,12 @@ class EmailService
             ->text($message);
         $this->mailer->send($email);
     }
-    public function sendEmailWithPieceJoin($from,$subject,$message,$file){
+
+    /**
+     * @throws TransportExceptionInterface
+     */
+    public function sendEmailWithPieceJoin($from, $subject, $message, $file): void
+    {
         $email = (new TemplatedEmail())
             ->from($from)
             ->to('no-reply@judo-club-wallers.fr')
