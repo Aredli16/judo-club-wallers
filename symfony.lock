@@ -46,6 +46,9 @@
             "./migrations/.gitignore"
         ]
     },
+    "liip/test-fixtures-bundle": {
+        "version": "2.4.1"
+    },
     "phpunit/phpunit": {
         "version": "9.5",
         "recipe": {
@@ -286,6 +289,15 @@
         "files": [
             "./config/packages/messenger.yaml"
         ]
+    },
+    "theofidry/alice-data-fixtures": {
+        "version": "1.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "fe5a50faf580eb58f08ada2abe8afbd2d4941e05"
+        }
     },
     "twig/extra-bundle": {
         "version": "v3.4.0"
