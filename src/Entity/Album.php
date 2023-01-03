@@ -24,12 +24,12 @@ class Album
     #[ORM\Column(options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $created_at;
 
-    #[ORM\OneToMany(mappedBy: 'album', targetEntity: Image::class, cascade: ['persist'], orphanRemoval: true)]
-    private Collection $photos;
+    #[ORM\OneToMany(mappedBy: 'album', targetEntity: AlbumContent::class, cascade: ['persist'], orphanRemoval: true)]
+    private Collection $content;
 
     public function __construct()
     {
-        $this->photos = new ArrayCollection();
+        $this->content = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
     }
 
@@ -75,29 +75,29 @@ class Album
     }
 
     /**
-     * @return Collection<int, Image>
+     * @return Collection<int, AlbumContent>
      */
-    public function getPhotos(): Collection
+    public function getContent(): Collection
     {
-        return $this->photos;
+        return $this->content;
     }
 
-    public function addPhoto(Image $photo): self
+    public function addContent(AlbumContent $content): self
     {
-        if (!$this->photos->contains($photo)) {
-            $this->photos->add($photo);
-            $photo->setAlbum($this);
+        if (!$this->content->contains($content)) {
+            $this->content->add($content);
+            $content->setAlbum($this);
         }
 
         return $this;
     }
 
-    public function removePhoto(Image $photo): self
+    public function removeContent(AlbumContent $content): self
     {
-        if ($this->photos->removeElement($photo)) {
+        if ($this->content->removeElement($content)) {
             // set the owning side to null (unless already changed)
-            if ($photo->getAlbum() === $this) {
-                $photo->setAlbum(null);
+            if ($content->getAlbum() === $this) {
+                $content->setAlbum(null);
             }
         }
 

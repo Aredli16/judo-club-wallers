@@ -6,7 +6,7 @@ use App\Entity\Article;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
-class ArticleUnitTest extends TestCase
+class ArticleTest extends TestCase
 {
     public function testArticleFields(): void
     {

@@ -3,14 +3,15 @@
 namespace App\Tests\Entity;
 
 use App\Entity\Album;
-use App\Entity\Image;
+use App\Entity\AlbumContent;
+use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
 class AlbumTest extends TestCase
 {
     public function testIsTrue(): void
     {
-        $createdAt = new \DateTimeImmutable();
+        $createdAt = new DateTimeImmutable();
         $album = (new Album())
             ->setTitle('test_album')
             ->setSlug('test-album')
@@ -29,7 +30,7 @@ class AlbumTest extends TestCase
 
         $this->assertNotEquals('false', $album->getTitle());
         $this->assertNotEquals('false', $album->getSlug());
-        $this->assertNotEquals(new \DateTimeImmutable(), $album->getCreatedAt());
+        $this->assertNotEquals(new DateTimeImmutable(), $album->getCreatedAt());
     }
 
     public function testIsEmpty(): void
@@ -37,21 +38,21 @@ class AlbumTest extends TestCase
         $album = new Album();
 
         $this->assertEmpty($album->getId());
-        $this->assertEmpty($album->getTitle(),);
+        $this->assertEmpty($album->getTitle());
         $this->assertEmpty($album->getSlug());
     }
 
-    public function testAddGetRemovePhotos(): void
+    public function testAddGetRemoveContent(): void
     {
         $album = new Album();
-        $photo = new Image();
+        $content = new AlbumContent();
 
-        $this->assertEmpty($album->getPhotos());
+        $this->assertEmpty($album->getContent());
 
-        $album->addPhoto($photo);
-        $this->assertContains($photo, $album->getPhotos());
+        $album->addContent($content);
+        $this->assertContains($content, $album->getContent());
 
-        $album->removePhoto($photo);
-        $this->assertEmpty($album->getPhotos());
+        $album->removeContent($content);
+        $this->assertEmpty($album->getContent());
     }
 }
