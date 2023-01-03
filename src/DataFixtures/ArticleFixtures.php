@@ -29,7 +29,7 @@ class ArticleFixtures extends Fixture
             $article->setContent($faker->text() . "'s Article");
             $article->setAuthor($faker->firstName() . $faker->lastName());
             $article->setSlug($faker->slug());
-            $article->setImage("imgTest");
+            $article->setImageFileName("imgTest.png");
             $article->setTitle($faker->firstName() . " " . $article->getAuthor());
             $manager->persist($article);
         }
