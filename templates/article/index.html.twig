@@ -45,7 +45,7 @@
                                         href="{{path('show.article', {'slug': article.getSlug()})}}">{{article.getTitle()}}</a>
                                 </h5>
                             </div>
-                            <p class="content">{{article.getContent()}}</p>
+                            <p class="content">{{article.getContent()|raw}}</p>
                         </div>
                     </div>
                 </div>
