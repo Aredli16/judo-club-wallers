@@ -19,7 +19,7 @@ class AlbumContent
     #[ORM\Column(options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $uploaded_at;
 
-    #[ORM\ManyToOne(inversedBy: 'photos')]
+    #[ORM\ManyToOne(inversedBy: 'album')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Album $album = null;
 
