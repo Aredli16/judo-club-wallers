@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Vtiful\Kernel\Format;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -100,6 +101,11 @@ class Article
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
+    }
+
+    public function getCreatedAtToString(): ?string
+    {
+        return $this->created_at->format('d/m/Y');
     }
 
     public function setCreatedAt(\DateTimeImmutable $created_at): self
