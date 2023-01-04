@@ -16,7 +16,9 @@ class AlbumContentFixtures extends Fixture implements DependentFixtureInterface
 {
     const FILE_CONTENT_GENERATED = AlbumFixtures::GENERATE_ALBUM * 3;
 
-    public function __construct(private readonly HttpClientInterface $client)
+    public function __construct(
+        private readonly HttpClientInterface $client
+    )
     {
     }
 
@@ -25,7 +27,7 @@ class AlbumContentFixtures extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager): void
     {
-        // Remove all image into upload/media/albums folder
+        // Remove all image into uploads/media/albums/content folder
         $this->removeContentFolder();
 
         for ($i = 0; $i <= self::FILE_CONTENT_GENERATED; $i++) {
@@ -56,7 +58,7 @@ class AlbumContentFixtures extends Fixture implements DependentFixtureInterface
         }
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [AlbumFixtures::class];
     }

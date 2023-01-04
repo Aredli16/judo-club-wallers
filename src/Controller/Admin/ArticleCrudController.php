@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -23,12 +24,33 @@ class ArticleCrudController extends AbstractCrudController
             TextField::new('title'),
             TextEditorField::new('content')
                 ->onlyOnForms(),
-            TextField::new('author'),
+            TextField::new('author')
+                ->setDisabled(),
             DateTimeField::new('createdAt')
                 ->onlyOnIndex(),
-            ImageField::new('image')
+            ImageField::new('imageFileName')
                 ->onlyOnForms()
-                ->setUploadDir('public/uploads/media/articles/')
+                ->setBasePath('public/uploads/media/articles/content')
+                ->setUploadDir('public/uploads/media/articles/content')
         ];
+    }
+
+    public function createEntity(string $entityFqcn)
+    {
+        return (new Article())
+            ->setAuthor("Username");
+    }
+
+    /**
+     * @param EntityManagerInterface $entityManager
+     * @param Article $entityInstance
+     */
+    public function deleteEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $image = $this->getParameter('articles_directory') . '/' . $entityInstance->getImageFileName();
+        if (is_file($image)) {
+            unlink($image);
+        }
+        parent::deleteEntity($entityManager, $entityInstance);
     }
 }

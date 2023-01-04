@@ -24,14 +24,14 @@ class ArticleRepositoryTest extends KernelTestCase
             ->setTitle("test_title")
             ->setContent("test_content")
             ->setAuthor("test_author")
-            ->setImage("test_img")
+            ->setImageFileName("test_img")
             ->setSlug("test_slug");
         $this->repository->save($test, true);
 
         $this->assertEquals($test->getTitle(), $this->repository->find($test->getId())->getTitle());
         $this->assertEquals($test->getContent(), $this->repository->find($test->getId())->getContent());
         $this->assertEquals($test->getAuthor(), $this->repository->find($test->getId())->getAuthor());
-        $this->assertEquals($test->getImage(), $this->repository->find($test->getId())->getImage());
+        $this->assertEquals($test->getImageFileName(), $this->repository->find($test->getId())->getImageFileName());
         $this->assertEquals($test->getSlug(), $this->repository->find($test->getId())->getSlug());
     }
 
@@ -50,7 +50,7 @@ class ArticleRepositoryTest extends KernelTestCase
             ->setTitle("test_title")
             ->setContent("test_content")
             ->setAuthor("test_author")
-            ->setImage("test_img");
+            ->setImageFileName("test_img");
         $this->repository->save($test, true);
 
         $this->assertEquals('test-title-' . $test->getId(), $this->repository->find($test->getId())->getSlug());

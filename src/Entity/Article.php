@@ -23,8 +23,8 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
-    #[ORM\Column(type: Types::BLOB)]
-    private $image = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageFileName = null;
 
     #[ORM\Column (options: ["default" => "CURRENT_TIMESTAMP"])]
     private ?\DateTimeImmutable $created_at;
@@ -85,14 +85,14 @@ class Article
         return $this;
     }
 
-    public function getImage()
+    public function getImageFileName(): ?string
     {
-        return $this->image;
+        return $this->imageFileName;
     }
 
-    public function setImage($image): self
+    public function setImageFileName(string $imageFileName): self
     {
-        $this->image = $image;
+        $this->imageFileName = $imageFileName;
 
         return $this;
     }
