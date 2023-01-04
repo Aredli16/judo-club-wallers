@@ -9,7 +9,7 @@ Judo Club Wallers website
 ## Built With
 
 - [![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
-- [![Symfony](https://img.shields.io/badge/symfony-%23000000.svg?style=for-the-badge&logo=symfony&logoColor=white)](https://symfony.com/)   
+- [![Symfony](https://img.shields.io/badge/symfony-%23000000.svg?style=for-the-badge&logo=symfony&logoColor=white)](https://symfony.com/)
 - [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
 
 ## Installation 🛠️
@@ -24,7 +24,22 @@ $ composer install
 
 ```bash
 $  docker compose up # Launch database
-$  symfony server:start
+$  php bin/console doctrine:migrations:migrate # Set up the database
+
+$  symfony server:start # To start symfony server if you have Symfony CLI installed
+```
+
+### Fill database with fake data
+
+```bash
+$  php bin/console doctrine:fixtures:load
+```
+
+## Testing 🧪
+
+```bash
+$  php bin/phpunit # Testing app
+$  php bin/phpunit --coverage-html var/test # Testing app and report code coverage into var/test/index.html file
 ```
 
 ## Deployment 🏗️
