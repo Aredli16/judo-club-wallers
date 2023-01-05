@@ -30,8 +30,7 @@
             "version": "3.0",
             "ref": "1f5514cfa15b947298df4d771e694e578d4c204d"
         },
-        "files": [
-        ]
+        "files": []
     },
     "doctrine/doctrine-migrations-bundle": {
         "version": "3.2",
@@ -45,6 +44,18 @@
             "./config/packages/doctrine_migrations.yaml",
             "./migrations/.gitignore"
         ]
+    },
+    "easycorp/easyadmin-bundle": {
+        "version": "4.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "b131e6cbfe1b898a508987851963fff485986285"
+        }
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v6.0.1"
     },
     "liip/test-fixtures-bundle": {
         "version": "2.4.1"
