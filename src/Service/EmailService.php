@@ -3,15 +3,19 @@
 namespace App\Service;
 
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 
 class EmailService
 {
-    public function __construct(private readonly MailerInterface $mailer)
-    {
+    private $params;
 
+    public function __construct(private readonly MailerInterface $mailer, ParameterBagInterface $params)
+    {
+        $this->params = $params;
     }
+
 
     /**
      * @throws TransportExceptionInterface
@@ -25,9 +29,17 @@ class EmailService
             ->text($message);
 
         if ($file != null) {
-            $email->attachFromPath($file);
+            $fileName = $file->getClientOriginalName();
+            $file->move(
+                $this->params->get('file_upload_email'),
+                $fileName
+            );
+            $filePath = $this->params->get('file_upload_email') . $fileName;
+
+            $email->attachFromPath($filePath);
         }
 
         $this->mailer->send($email);
+        unlink($filePath);
     }
 }

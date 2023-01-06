@@ -21,16 +21,8 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             if ($data['files'] != null) {
-                $fileName = $data['files']->getClientOriginalName();
-                $data['files']->move(
-                    $this->getParameter('file_upload_email'),
-                    $fileName
-                );
-                $filePath = $this->getParameter('file_upload_email') . $fileName;
+                $service->sendEmail($data['email'], $data['subject'], $data['message'], $data['files']);
 
-                $service->sendEmail($data['email'], $data['subject'], $data['message'], $filePath);
-
-                unlink($filePath);
             } else {
                 $service->sendEmail($data['email'], $data['subject'], $data['message']);
             }
