@@ -39,6 +39,8 @@ class EmailService
             $email->attachFromPath($filePath);
         }
         $this->mailer->send($email);
-        unlink($filePath);
+        if ($file != null) {
+            unlink($filePath);
+        }
     }
 }
