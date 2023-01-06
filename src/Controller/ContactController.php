@@ -26,7 +26,6 @@ class ContactController extends AbstractController
             } else {
                 $service->sendEmail($data['email'], $data['subject'], $data['message']);
             }
-
         }
         $this->redirectToRoute('app_contact', [], Response::HTTP_SEE_OTHER);
 
