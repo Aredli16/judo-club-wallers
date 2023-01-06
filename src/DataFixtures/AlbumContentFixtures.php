@@ -36,7 +36,7 @@ class AlbumContentFixtures extends Fixture implements DependentFixtureInterface
                 ->setFileName(md5(uniqid()) . '.jpg')
                 ->setAlbum($this->getReference(rand(0, AlbumFixtures::GENERATE_ALBUM) . '-album'));
 
-            $response = $this->client->request('GET', 'https://picsum.photos/200');
+            $response = $this->client->request('GET', 'https://picsum.photos/1920/1080');
             $fileHandler = fopen('public/uploads/media/albums/content/' . $content->getFileName(), 'w');
             foreach ($this->client->stream($response) as $chunk) {
                 fwrite($fileHandler, $chunk->getContent());

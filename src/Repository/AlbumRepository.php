@@ -11,7 +11,6 @@ use Doctrine\Persistence\ManagerRegistry;
  *
  * @method Album|null find($id, $lockMode = null, $lockVersion = null)
  * @method Album|null findOneBy(array $criteria, array $orderBy = null)
- * @method Album[]    findAll()
  * @method Album[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class AlbumRepository extends ServiceEntityRepository
@@ -37,6 +36,21 @@ class AlbumRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findAll(): array
+    {
+        return $this->findBy([], ['created_at' => 'DESC']);
+    }
+
+
+    public function findLastAlbum(int $number): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.created_at', 'DESC')
+            ->setMaxResults($number)
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

@@ -260,46 +260,26 @@
                                 industry's standard dummy text ever since the been when an unknown printer.</p>
                         </div>
                     </div>
-                    <div class="row w3-shuffle gallery">
-                        <figure class="image-item col-md-6 col-lg-4 col-sm-6">
-                            <div class="content-box m-b30">
-                                <div class="box-inner overlay-box gallery-box">
-                                    <a href="{{ path('app_home') }}">
-                                        <img src="{{ asset('images/our-work/pic1.jpg') }}">
-                                    </a>
-                                    <div class="box-info overlay hover">
-                                        <h6 class="m-b0"><a href="#">Fete de cloture 2022<i
-                                                        class="fa fa-angle-right pull-right fs-18 m-t5"></i></a></h6>
+                    <div class="row">
+                        {% for album in lastAlbums %}
+                            <div class="col-md-6 col-lg-4 col-sm-6">
+                                <div class="content-box m-b30">
+                                    <div class="box-inner overlay-box gallery-box">
+                                        <a href="{{ path('app_show.album', {'slug': album.slug}) }}">
+                                            <img src="{{ asset('uploads/media/albums/content/' ~ album.content.get(0).filename) }}"
+                                                 alt="{{ album.title }}">
+                                        </a>
+                                        <div class="box-info overlay hover">
+                                            <h6 class="m-b0"><a
+                                                        href="{{ path('app_show.album', {'slug': album.slug}) }}">{{ album.title }}
+                                                    <i
+                                                            class="fa fa-angle-right pull-right fs-18 m-t5"></i></a>
+                                            </h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </figure>
-                        <figure class="image-item col-md-6 col-lg-4 col-sm-6">
-                            <div class="content-box m-b30">
-                                <div class="box-inner overlay-box gallery-box">
-                                    <a href="{{ path('app_home') }}">
-                                        <img src="{{ asset('images/our-work/pic2.jpg') }}">
-                                    </a>
-                                    <div class="box-info overlay hover">
-                                        <h6 class="m-b0"><a href="#">Compétition Douai<i
-                                                        class="fa fa-angle-right pull-right fs-18 m-t5"></i></a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </figure>
-                        <figure class="image-item col-md-6 col-lg-4 col-sm-6">
-                            <div class="content-box m-b30">
-                                <div class="box-inner overlay-box gallery-box">
-                                    <a href="{{ path('app_home') }}">
-                                        <img src="{{ asset('images/our-work/pic3.jpg') }}">
-                                    </a>
-                                    <div class="box-info overlay hover">
-                                        <h6 class="m-b0"><a href="#">Compétition Aniche<i
-                                                        class="fa fa-angle-right pull-right fs-18 m-t5"></i></a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </figure>
+                        {% endfor %}
                         <div class="col-1 my-sizer-element"></div>
                     </div>
                 </div>
