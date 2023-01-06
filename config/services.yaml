@@ -6,6 +6,7 @@
 parameters:
   albums_directory: '%kernel.project_dir%/public/uploads/media/albums/content'
   articles_directory: '%kernel.project_dir%/public/uploads/media/articles/content'
+  file_upload_email: '%kernel.project_dir%/public/uploads/files/email/'
 services:
   # default configuration for services in *this* file
   _defaults:

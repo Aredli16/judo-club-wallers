@@ -16,27 +16,18 @@ class EmailService
     /**
      * @throws TransportExceptionInterface
      */
-    public function sendEmail($from, $subject, $message): void
+    public function sendEmail($from, $subject, $message, $file = null): void
     {
         $email = (new TemplatedEmail())
             ->from($from)
             ->to('no-reply@judo-club-wallers.fr')
             ->subject($subject)
             ->text($message);
-        $this->mailer->send($email);
-    }
 
-    /**
-     * @throws TransportExceptionInterface
-     */
-    public function sendEmailWithPieceJoin($from, $subject, $message, $file): void
-    {
-        $email = (new TemplatedEmail())
-            ->from($from)
-            ->to('no-reply@judo-club-wallers.fr')
-            ->subject($subject)
-            ->text($message)
-            ->attachFromPath($file);
+        if ($file != null) {
+            $email->attachFromPath($file);
+        }
+
         $this->mailer->send($email);
     }
 }
