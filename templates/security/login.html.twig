@@ -3,7 +3,6 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -14,29 +13,100 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
+    <div class="bglog d-flex justify-content-center">
+        <div class="container align-self-center px-2 mt-auto pb-5 mb-5 ">
+            <div class="rowlog no-gutters d-flex flex-direction-row">
+                <div class="col-lg-5 d-none d-lg-block">
+                    <img
+                            src="/images/img1.jpg"
+                            class="img-fluid left-img"
+                            alt=""
+                    />
+                </div>
+                <div class="col-lg-7 px-2 my-5 align-self-center center">
+                    <img class="imglogo img-fluid m-auto pb-3 " src="/images/logo.png" alt="">
+                    <h3 class="py-1">Se Connecter</h3>
+                    <form>
+                        <div class="form-rowlog">
+                            <div class="col-lg-7 m-auto">
+                                <input
+                                        type="email"
+                                        placeholder="Adresse Email"
+                                        class="form-control my-4 p-2"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-rowlog">
+                            <div class="col-lg-7 m-auto">
+                                <input
+                                        type="password"
+                                        placeholder="Mot de passe"
+                                        class="form-control my-4 p-2"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-rowlog">
+                            <div class="col-lg-7 m-auto">
+                                <button class="btnlog1 mt-1 mb-5">Se connecter</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    #}
+    </div>
+    <style lang="scss">
+      .imglogo {
+        height: 10vh;
+        width: 10vh;
+      }
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Se connecter
-    </button>
-</form>
+      .bglog {
+        background-color: rgb(227, 227, 227);
+        height: 100vh;
+      }
+
+      .rowlog {
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 12px 12px 22px grey;
+        height: 80%;
+        width: 80%;
+        margin: auto;
+      }
+
+      .left-img {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        height: 100%;
+        width: 100%
+      }
+
+      .btnlog1 {
+        height: 50px;
+        width: 100%;
+        background-color: black;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        border: none;
+      }
+
+      .btnlog1:hover {
+        background-color: white;
+        color: black;
+        border: 2px solid black;
+      }
+
+      .center {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .boxleft {
+        max-width: 40%;
+      }
+    </style>
 {% endblock %}
+
+
