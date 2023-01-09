@@ -3,40 +3,44 @@
 namespace App\Service;
 
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 
 class EmailService
 {
-    public function __construct(private readonly MailerInterface $mailer)
-    {
+    private $params;
 
+    public function __construct(private readonly MailerInterface $mailer, ParameterBagInterface $params)
+    {
+        $this->params = $params;
     }
+
 
     /**
      * @throws TransportExceptionInterface
      */
-    public function sendEmail($from, $subject, $message): void
+    public function sendEmail($from, $subject, $message, $file = null): void
     {
         $email = (new TemplatedEmail())
             ->from($from)
             ->to('no-reply@judo-club-wallers.fr')
             ->subject($subject)
             ->text($message);
-        $this->mailer->send($email);
-    }
 
-    /**
-     * @throws TransportExceptionInterface
-     */
-    public function sendEmailWithPieceJoin($from, $subject, $message, $file): void
-    {
-        $email = (new TemplatedEmail())
-            ->from($from)
-            ->to('no-reply@judo-club-wallers.fr')
-            ->subject($subject)
-            ->text($message)
-            ->attachFromPath($file);
+        if ($file != null) {
+            $fileName = $file->getClientOriginalName();
+            $file->move(
+                $this->params->get('file_upload_email'),
+                $fileName
+            );
+            $filePath = $this->params->get('file_upload_email') . $fileName;
+
+            $email->attachFromPath($filePath);
+        }
         $this->mailer->send($email);
+        if ($file != null) {
+            unlink($filePath);
+        }
     }
 }
