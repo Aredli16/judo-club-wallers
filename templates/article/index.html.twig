@@ -1,256 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!{% endblock %}
+{% block title %}Hello ArticleController!
+{% endblock %}
 
 {% block body %}
-    <div class="main-content">
-        <!-- Banner -->
-        <section class="banner-area overlay-box">
-            <div class="overlay "></div>
-            <div class="container">
-                <div class="banner-content-area text-white">
-                    <h1>Blog Half Image</h1>
-                    <div class="breadcrumb-block">
-                        <ul class="list-inline">
-                            <li><a href="index.html">Home</a></li>
-                            <li>Blog Half Image</li>
-                        </ul>
+<div class="main-content">
+    <!-- Banner -->
+    <section class="banner-area overlay-box">
+        <div class="overlay "></div>
+        <div class="container">
+            <div class="banner-content-area text-white">
+                <h1>Blog Half Image</h1>
+                <div class="breadcrumb-block">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>Blog Half Image</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner End -->
+    <!-- Blog Grid End -->
+    <section class="section-style-3 contact-style-1">
+        <div class="container">
+            {% for article in articles %}
+            <div class="row">
+                <div class="col-lg-12 col-xl-12 col-md-12 m-b30">
+                    <div class="blog-entry grid-post dzseth row m-lr0">
+                        <div class="entry-thumb col-lg-3 col-md-4 p-0">
+                            <a href="{{path('show.article', {'slug': article.getSlug()})}}"><img
+                                    src={{asset('uploads/media/articles/content/' ~ article.getImageFileName())}} alt=""
+                                    class="img-cover" /></a>
+                        </div>
+                        <div class="blog-content col-lg-9 col-md-8">
+                            <div class="blog-info">
+                                <span>{{article.getCreatedAttoString()}}</span>
+                                Par {{article.getAuthor()}}
+                            </div>
+                            <div class="blog-title title">
+                                <h5><a
+                                        href="{{path('show.article', {'slug': article.getSlug()})}}">{{article.getTitle()}}</a>
+                                </h5>
+                            </div>
+                            <p class="content">{{article.getContent()|raw}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Banner End -->
-        <!-- Blog Grid End -->
-        <section class="section-style-3 contact-style-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-xl-12 col-md-12 m-b30">
-                        <div class="blog-entry grid-post dzseth row m-lr0">
-                            <div class="entry-thumb col-lg-3 col-md-4 p-0">
-                                <img src="images/blog/grid/pic1.jpg" alt="" class="img-cover"/>
-                            </div>
-                            <div class="blog-content col-lg-9 col-md-8">
-                                <div class="blog-info">
-                                    <span>17 Jan 2018</span>
-                                    <a href="#">By George</a>
-                                </div>
-                                <div class="blog-title">
-                                    <h5><a href="#">Event Title Here</a></h5>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                    Ipsum.</p>
-                                <div class="blog-meta m-t30">
-                                    <ul>
-                                        <li class="blog-like">
-                                            <a href="#">
-                                                <i class="fa fa-heart-o"></i>
-                                                <i class="fa fa-heart"></i>
-                                                Like
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-comments-o"></i>
-                                                Comment
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-xl-12 col-md-12 m-b30">
-                        <div class="blog-entry grid-post dzseth row m-lr0">
-                            <div class="entry-thumb col-lg-3 col-md-4 p-0">
-                                <img src="images/blog/grid/pic2.jpg" alt="" class="img-cover"/>
-                            </div>
-                            <div class="blog-content col-lg-9 col-md-8">
-                                <div class="blog-info">
-                                    <span>17 Jan 2018</span>
-                                    <a href="#">By George</a>
-                                </div>
-                                <div class="blog-title">
-                                    <h5><a href="#">Event Title Here</a></h5>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                    Ipsum.</p>
-                                <div class="blog-meta m-t30">
-                                    <ul>
-                                        <li class="blog-like">
-                                            <a href="#">
-                                                <i class="fa fa-heart-o"></i>
-                                                <i class="fa fa-heart"></i>
-                                                Like
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-comments-o"></i>
-                                                Comment
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-xl-12 col-md-12 m-b30">
-                        <div class="blog-entry grid-post dzseth row m-lr0">
-                            <div class="entry-thumb col-lg-3 col-md-4 p-0">
-                                <img src="images/blog/grid/pic3.jpg" alt="" class="img-cover"/>
-                            </div>
-                            <div class="blog-content col-lg-9 col-md-8">
-                                <div class="blog-info">
-                                    <span>17 Jan 2018</span>
-                                    <a href="#">By George</a>
-                                </div>
-                                <div class="blog-title">
-                                    <h5><a href="#">Event Title Here</a></h5>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                    Ipsum.</p>
-                                <div class="blog-meta m-t30">
-                                    <ul>
-                                        <li class="blog-like">
-                                            <a href="#">
-                                                <i class="fa fa-heart-o"></i>
-                                                <i class="fa fa-heart"></i>
-                                                Like
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-comments-o"></i>
-                                                Comment
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-xl-12 col-md-12 m-b30">
-                        <div class="blog-entry grid-post dzseth row m-lr0">
-                            <div class="entry-thumb col-lg-3 col-md-4 p-0">
-                                <img src="images/blog/grid/pic4.jpg" alt="" class="img-cover"/>
-                            </div>
-                            <div class="blog-content col-lg-9 col-md-8">
-                                <div class="blog-info">
-                                    <span>17 Jan 2018</span>
-                                    <a href="#">By George</a>
-                                </div>
-                                <div class="blog-title">
-                                    <h5><a href="#">Event Title Here</a></h5>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                    Ipsum.</p>
-                                <div class="blog-meta m-t30">
-                                    <ul>
-                                        <li class="blog-like">
-                                            <a href="#">
-                                                <i class="fa fa-heart-o"></i>
-                                                <i class="fa fa-heart"></i>
-                                                Like
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-comments-o"></i>
-                                                Comment
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-xl-12 col-md-12 m-b30">
-                        <div class="blog-entry grid-post dzseth row m-lr0">
-                            <div class="entry-thumb col-lg-3 col-md-4 p-0">
-                                <img src="images/blog/grid/pic1.jpg" alt="" class="img-cover"/>
-                            </div>
-                            <div class="blog-content col-lg-9 col-md-8">
-                                <div class="blog-info">
-                                    <span>17 Jan 2018</span>
-                                    <a href="#">By George</a>
-                                </div>
-                                <div class="blog-title">
-                                    <h5><a href="#">Event Title Here</a></h5>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                    Ipsum.</p>
-                                <div class="blog-meta m-t30">
-                                    <ul>
-                                        <li class="blog-like">
-                                            <a href="#">
-                                                <i class="fa fa-heart-o"></i>
-                                                <i class="fa fa-heart"></i>
-                                                Like
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-comments-o"></i>
-                                                Comment
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-pagination">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </section>
-        <!-- Blog Grid End -->
-    </div>
+            {% endfor %}
+            {{knp_pagination_render(articles)}}
+        </div>
+    </section>
+    <!-- Blog Grid End -->
+</div>
+
+<style>
+    .content{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
+
+    .title{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+</style>
 {% endblock %}
