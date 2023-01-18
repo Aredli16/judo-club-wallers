@@ -261,7 +261,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        {% for album in lastAlbums %}
+                        {% for album in latestAlbum %}
                             <div class="col-md-6 col-lg-4 col-sm-6">
                                 <div class="content-box m-b30">
                                     <div class="box-inner overlay-box gallery-box">
@@ -453,119 +453,33 @@
                 <div class="container">
                     <div class="row">
                         <div class="head-section col-md-12 text-center">
-                            <h2>Latest Blog</h2>
+                            <h2>Dernières actualités</h2>
                             <div class="title-separator bg-primary"></div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the
-                                industry's standard dummy text ever since the been when an unknown printer.</p>
+                            <p>Découvrez ici les dernières actualités importantes du club.</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 card-carousel owl-carousel">
-                            <div class="item">
-                                <div class="blog-entry grid-post ">
-                                    <div class="entry-thumb">
-                                        <img src="images/blog/grid/pic2.jpg" alt="">
-                                    </div>
-                                    <div class="blog-content">
-                                        <div class="blog-info">
-                                            <span>17 Jan 2018</span>
-                                            <a href="#">By George</a>
+                            {% for article in latestArticle %}
+                                <div class="item">
+                                    <div class="blog-entry grid-post ">
+                                        <div class="entry-thumb">
+                                            <img src="{{ asset('uploads/media/articles/content/' ~ article.imageFileName) }}"
+                                                 alt="">
                                         </div>
-                                        <div class="blog-title">
-                                            <h5><a href="#">Blog Title Here</a></h5>
-                                        </div>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
-                                        <div class="blog-meta">
-                                            <ul>
-                                                <li class="blog-like">
-                                                    <a href="#">
-                                                        <i class="fa fa-heart-o"></i>
-                                                        <i class="fa fa-heart"></i>
-                                                        Like
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-comments-o"></i>
-                                                        Comment
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                        <div class="blog-content">
+                                            <div class="blog-info">
+                                                <span>{{ article.createdAtToString }}</span>
+                                                <a href="#">{{ article.author }}</a>
+                                            </div>
+                                            <div class="blog-title">
+                                                <h5><a href="#">{{ article.title }}</a></h5>
+                                            </div>
+                                            <p>{{ article.content }}</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="blog-entry grid-post ">
-                                    <div class="entry-thumb">
-                                        <img src="images/blog/grid/pic4.jpg" alt="">
-                                    </div>
-                                    <div class="blog-content">
-                                        <div class="blog-info">
-                                            <span>17 Jan 2018</span>
-                                            <a href="#">By George</a>
-                                        </div>
-                                        <div class="blog-title">
-                                            <h5><a href="#">Blog Title Here</a></h5>
-                                        </div>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
-                                        <div class="blog-meta">
-                                            <ul>
-                                                <li class="blog-like">
-                                                    <a href="#">
-                                                        <i class="fa fa-heart-o"></i>
-                                                        <i class="fa fa-heart"></i>
-                                                        Like
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-comments-o"></i>
-                                                        Comment
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="blog-entry grid-post ">
-                                    <div class="entry-thumb">
-                                        <img src="images/blog/grid/pic3.jpg" alt="">
-                                    </div>
-                                    <div class="blog-content">
-                                        <div class="blog-info">
-                                            <span>17 Jan 2018</span>
-                                            <a href="#">By George</a>
-                                        </div>
-                                        <div class="blog-title">
-                                            <h5><a href="#">Blog Title Here</a></h5>
-                                        </div>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
-                                        <div class="blog-meta">
-                                            <ul>
-                                                <li class="blog-like">
-                                                    <a href="#">
-                                                        <i class="fa fa-heart-o"></i>
-                                                        <i class="fa fa-heart"></i>
-                                                        Like
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-comments-o"></i>
-                                                        Comment
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

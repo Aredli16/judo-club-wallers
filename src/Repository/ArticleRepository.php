@@ -40,15 +40,15 @@ class ArticleRepository extends ServiceEntityRepository
 
     public function findAll(): array
     {
-        return $this->findBy([], ['created_at' => 'DESC']);
+        return $this->findBy([], ['id' => 'DESC']);
     }
 
-    public function findLatestArticles(int $maxResults, string $exclude = null): array
+    public function findLatestArticles(int $maxResults, string $exclude = ""): array
     {
         return $this->createQueryBuilder('a')
             ->setParameter('val', $exclude)
             ->andWhere('a.id != :val')
-            ->orderBy('a.created_at', 'DESC')
+            ->orderBy('a.id', 'DESC')
             ->setMaxResults($maxResults)
             ->getQuery()
             ->getResult();
