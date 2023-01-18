@@ -24,7 +24,7 @@ class ArticleController extends AbstractController
             'articles' => $paginatorInterface->paginate(
                 $this->articleRepository->findAll(),
                 $request->query->getInt('page',1),
-                1
+                8
             )
         ]);
     }
