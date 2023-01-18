@@ -15,15 +15,16 @@ class ArticleController extends AbstractController
 
     public function __construct(private readonly ArticleRepository $articleRepository)
     {
-        
+
     }
+
     #[Route('/article', name: 'app_article', methods: ['GET'])]
     public function index(PaginatorInterface $paginatorInterface, Request $request): Response
-    {   
+    {
         return $this->render('article/index.html.twig', [
             'articles' => $paginatorInterface->paginate(
                 $this->articleRepository->findAll(),
-                $request->query->getInt('page',1),
+                $request->query->getInt('page', 1),
                 8
             )
         ]);
@@ -34,7 +35,7 @@ class ArticleController extends AbstractController
     {
         return $this->render('article/details.html.twig', [
             'article' => $article,
-            'latest_articles' => $this->articleRepository->findThreeLatestArticles($article->getId())
+            'latest_articles' => $this->articleRepository->findLatestArticles(3, $article->getId())
         ]);
     }
 }
