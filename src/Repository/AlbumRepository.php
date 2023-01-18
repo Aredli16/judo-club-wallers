@@ -40,14 +40,14 @@ class AlbumRepository extends ServiceEntityRepository
 
     public function findAll(): array
     {
-        return $this->findBy([], ['created_at' => 'DESC']);
+        return $this->findBy([], ['id' => 'DESC']);
     }
 
 
-    public function findLastAlbum(int $number): array
+    public function findLatestAlbum(int $number): array
     {
         return $this->createQueryBuilder('a')
-            ->orderBy('a.created_at', 'DESC')
+            ->orderBy('a.id', 'DESC')
             ->setMaxResults($number)
             ->getQuery()
             ->getResult();

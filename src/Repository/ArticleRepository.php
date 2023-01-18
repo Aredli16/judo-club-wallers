@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -12,7 +11,6 @@ use Doctrine\Persistence\ManagerRegistry;
  *
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
  * @method Article|null findOneBy(array $criteria, array $orderBy = null)
- * @method Article[]    findAll()
  * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ArticleRepository extends ServiceEntityRepository
@@ -40,13 +38,18 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
-    public function findThreeLatestArticles($value): array
+    public function findAll(): array
+    {
+        return $this->findBy([], ['id' => 'DESC']);
+    }
+
+    public function findLatestArticles(int $maxResults, string $exclude = ""): array
     {
         return $this->createQueryBuilder('a')
-        ->setParameter('val', $value)
+            ->setParameter('val', $exclude)
             ->andWhere('a.id != :val')
             ->orderBy('a.id', 'DESC')
-            ->setMaxResults(3)
+            ->setMaxResults($maxResults)
             ->getQuery()
             ->getResult();
     }

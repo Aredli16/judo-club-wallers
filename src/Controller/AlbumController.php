@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Album;
 use App\Repository\AlbumRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,12 +19,14 @@ class AlbumController extends AbstractController
     }
 
     #[Route('/album', name: 'app_album', methods: ['GET'])]
-    public function index(): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        $albums = $this->albumRepository->findAll();
-
         return $this->render('album/index.html.twig', [
-            'albums' => $albums
+            'albums' => $paginator->paginate(
+                $this->albumRepository->findAll(),
+                $request->query->getInt('page', 1),
+                12
+            )
         ]);
     }
 
