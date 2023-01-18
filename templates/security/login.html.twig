@@ -1,79 +1,79 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"/>
-<!-- FAVICONS ICON -->
-<link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon"/>
-<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}"/>
-<!-- PAGE TITLE HERE -->
-<title>Judo Club Wallers</title>
-<!-- MOBILE SPECIFIC -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- STYLESHEETS -->
-<link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/templete.css') }}">
-<!-- Revolution Slider Css -->
-<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/css/settings.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/css/layers.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/css/navigation.css') }}">
-{% block body %}
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- META -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content=""/>
+    <meta name="author" content=""/>
+    <meta name="robots" content=""/>
+    <meta name="description" content=""/>
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
-    <div class="bglog d-flex justify-content-center">
-        <div class="container align-self-center px-2 mt-auto pb-5 mb-5 ">
-            <div class="rowlog no-gutters d-flex flex-direction-row">
+    <!-- FAVICONS ICON -->
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}"/>
+    <!-- PAGE TITLE HERE -->
+    <title>Judo Club Wallers</title>
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/templete.css') }}">
+    <!-- Revolution Slider Css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/css/settings.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/css/layers.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/revolution/css/navigation.css') }}">
+</head>
+<body>
+<div style="background-color: rgb(227, 227, 227); height: 100vh;">
+    <div class="container d-flex align-items-center h-100">
+        <div class="bg-white tp-shadow5 no-gutters d-flex" style="border-radius: 20px;">
+            <div class="row">
                 <div class="col-lg-5 d-none d-lg-block">
                     <img
-                            src="/images/img1.jpg"
-                            class="img-fluid left-img"
-                            alt=""
+                            src="{{ asset('/uploads/media/albums/content/' ~ image.fileName) }}"
+                            class="h-100 img-cover"
+                            style="border-radius: 20px 0 0 20px"
+                            alt="img"
                     />
                 </div>
-                <div class="col-lg-7 px-2 my-5 align-self-center center">
-                    <img class="imglogo img-fluid m-auto pb-3 " src="/images/logo.png" alt="">
+                <div class="col-lg-7 my-5 text-center">
+                    <a href="{{ path('app_home') }}"><img class="w-25 img-fluid m-auto pb-3 "
+                                                          src="{{ asset('images/logo.png') }}" alt="logo"></a>
                     <h3 class="py-1">Se Connecter</h3>
-                    <form method="post">
-                        <div class="form-rowlog">
-                            <div class="col-lg-7 m-auto">
-                                <input
-                                        type="email"
-                                        value="{{ last_username }}"
-                                        name="email"
-                                        id="inputEmail"
-                                        placeholder="Adresse Email"
-                                        autocomplete="email"
-                                        class="form-control my-4 p-2"
-                                        required autofocus
-                                />
+                    <form method="post" class="col-lg-7 mx-auto">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <div class="mb-3">
+                                You are logged in as {{ app.user.userIdentifier }}, <a
+                                        href="{{ path('app_logout') }}">Logout</a>
                             </div>
-                        </div>
-                        <div class="form-rowlog">
-                            <div class="col-lg-7 m-auto">
-                                <input
-                                        type="password"
-                                        name="password"
-                                        id="inputPassword"
-                                        autocomplete="current-password"
-                                        placeholder=" Mot de passe"
-                                        class="form-control my-4 p-2"
-                                        required
-                                />
-                            </div>
-                        </div>
-                        <div class="form-rowlog">
-                            <div class="col-lg-7 m-auto">
-                                <button class="btn btnlog1 mt-1 mb-5">Se connecter</button>
-                            </div>
-                        </div>
+                        {% endif %}
+                        <input
+                                type="email"
+                                value="{{ last_username }}"
+                                name="email"
+                                id="inputEmail"
+                                placeholder="Adresse Email"
+                                autocomplete="email"
+                                class="form-control my-4 p-2"
+                                required autofocus
+                        />
+                        <input
+                                type="password"
+                                name="password"
+                                id="inputPassword"
+                                autocomplete="current-password"
+                                placeholder="Mot de passe"
+                                class="form-control my-4 p-2"
+                                required
+                        />
+                        <button class="btn btn-primary btn-block">Se connecter</button>
                         <input type="hidden" name="_csrf_token"
                                value="{{ csrf_token('authenticate') }}">
                     </form>
@@ -81,93 +81,49 @@
             </div>
         </div>
     </div>
-    <style lang="scss">
-      .imglogo {
-        height: 13vh;
-        width: 10vh;
-      }
+</div>
+<!-- JAVASCRIPT  FILES ================ -->
+<script src="{{ asset('js/jquery.min.js') }}"></script><!-- JQUERY.MIN JS -->
+<script src="{{ asset('plugins/bootstrap/js/popper.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="{{ asset('plugins/bootstrap-menu/js/bootstrap-4-navbar.js') }}"></script><!-- MENU JS -->
+<script src="{{ asset('plugins/aos/aos.js') }}"></script><!-- AOS JS -->
+<script src="{{ asset('plugins/owl-carousel/js/owl.carousel.js') }}"></script><!-- OWL SLIDER -->
+<script src="{{ asset('plugins/counter/waypoints-min.js') }}"></script><!-- WAYPOINTS JS -->
+<script src="{{ asset('plugins/counter/counterup.min.js') }}"></script><!-- COUNTERUP JS -->
+<script src="{{ asset('plugins/magnific-popup/magnific-popup.js') }}"></script><!-- MAGNIFIC POPUP JS -->
+<script src="{{ asset('plugins/gallery-filter/shuffle.js') }}"></script><!-- GALLERY FILTER JS -->
+<script src="{{ asset('plugins/countdown/jquery.countdown.js') }}"></script><!-- JQUERY COUNTDOWN -->
+<script src="{{ asset('js/dz.carousel.js') }}"></script><!-- CAROUSEL JS -->
+<script src="{{ asset('js/custom.js') }}"></script><!-- CUSTOM JS -->
+<script src="{{ asset('js/dz.ajax.js') }}"></script><!-- CONTACT JS  -->
+<!-- revolution JS FILES -->
+<script src="{{ asset('plugins/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+<!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+<script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+<script src="{{ asset('js/rev.slider.js') }}"></script>
+<script>
+    jQuery(document).ready(function () {
+        'use strict';
+        dz_rev_slider_2();
 
-      .bglog {
-        background-color: rgb(227, 227, 227);
-        height: 100vh;
-      }
+    });	/*ready*/
+</script>
+</body>
+</html>
 
-      .rowlog {
-        background-color: white;
-        border-radius: 20px;
-        box-shadow: 12px 12px 22px grey;
-        height: 80%;
-        width: 80%;
-        margin: auto;
-      }
 
-      .left-img {
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        height: 100%;
-        width: 100%
-      }
 
-      .btnlog1 {
-        height: 50px;
-        width: 100%;
-        background-color: black;
-        border-radius: 10px;
-        color: white;
-        font-weight: bold;
-        border: none;
-      }
 
-      .btnlog1:hover {
-        background-color: white;
-        color: black;
-        border: 2px solid black;
-      }
 
-      .center {
-        text-align: center;
-        justify-content: center;
-      }
-
-      .boxleft {
-        max-width: 40%;
-      }
-    </style>
-    <!-- JAVASCRIPT  FILES ================ -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script><!-- JQUERY.MIN JS -->
-    <script src="{{ asset('plugins/bootstrap/js/popper.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
-    <script src="{{ asset('plugins/bootstrap-menu/js/bootstrap-4-navbar.js') }}"></script><!-- MENU JS -->
-    <script src="{{ asset('plugins/aos/aos.js') }}"></script><!-- AOS JS -->
-    <script src="{{ asset('plugins/owl-carousel/js/owl.carousel.js') }}"></script><!-- OWL SLIDER -->
-    <script src="{{ asset('plugins/counter/waypoints-min.js') }}"></script><!-- WAYPOINTS JS -->
-    <script src="{{ asset('plugins/counter/counterup.min.js') }}"></script><!-- COUNTERUP JS -->
-    <script src="{{ asset('plugins/magnific-popup/magnific-popup.js') }}"></script><!-- MAGNIFIC POPUP JS -->
-    <script src="{{ asset('plugins/gallery-filter/shuffle.js') }}"></script><!-- GALLERY FILTER JS -->
-    <script src="{{ asset('plugins/countdown/jquery.countdown.js') }}"></script><!-- JQUERY COUNTDOWN -->
-    <script src="{{ asset('js/dz.carousel.js') }}"></script><!-- CAROUSEL JS -->
-    <script src="{{ asset('js/custom.js') }}"></script><!-- CUSTOM JS -->
-    <script src="{{ asset('js/dz.ajax.js') }}"></script><!-- CONTACT JS  -->
-    <!-- revolution JS FILES -->
-    <script src="{{ asset('plugins/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
-    <script src="{{ asset('plugins/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
-    <!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
-    <script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
-    <script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
-    <script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-    <script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
-    <script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
-    <script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
-    <script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
-    <script src="{{ asset('plugins/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
-    <script src="{{ asset('js/rev.slider.js') }}"></script>
-    <script>
-        jQuery(document).ready(function () {
-            'use strict';
-            dz_rev_slider_2();
-        });	/*ready*/
-    </script>
-{% endblock %}
 
 
