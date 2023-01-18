@@ -31,8 +31,8 @@ class ArticleFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $article = new Article();
             $article->setTitle($faker->sentence(2));
-            $article->setContent($faker->text() . "'s Article");
-            $article->setAuthor($faker->firstName() . $faker->lastName());
+            $article->setContent($faker->realText());
+            $article->setAuthor($faker->firstName());
 
             // Image upload
             $article->setImageFileName(md5(uniqid()) . '.jpg');

@@ -4,74 +4,57 @@
 {% endblock %}
 
 {% block body %}
-<div class="main-content">
-    <!-- Banner -->
-    <section class="banner-area overlay-box">
-        <div class="overlay "></div>
-        <div class="container">
-            <div class="banner-content-area text-white">
-                <h1>Blog Half Image</h1>
-                <div class="breadcrumb-block">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>Blog Half Image</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Banner End -->
-    <!-- Blog Grid End -->
-    <section class="section-style-3 contact-style-1">
-        <div class="container">
-            {% for article in articles %}
-            <div class="row">
-                <div class="col-lg-12 col-xl-12 col-md-12 m-b30">
-                    <div class="blog-entry grid-post dzseth row m-lr0">
-                        <div class="entry-thumb col-lg-3 col-md-4 p-0">
-                            <a href="{{path('show.article', {'slug': article.getSlug()})}}"><img
-                                    src={{asset('uploads/media/articles/content/' ~ article.getImageFileName())}} alt=""
-                                    class="img-cover" /></a>
-                        </div>
-                        <div class="blog-content col-lg-9 col-md-8">
-                            <div class="blog-info">
-                                <span>{{article.getCreatedAttoString()}}</span>
-                                Par {{article.getAuthor()}}
-                            </div>
-                            <div class="blog-title title">
-                                <h5><a
-                                        href="{{path('show.article', {'slug': article.getSlug()})}}">{{article.getTitle()}}</a>
-                                </h5>
-                            </div>
-                            <p class="content">{{article.getContent()|raw}}</p>
-                        </div>
+    <div class="main-content">
+        <!-- Banner -->
+        <section class="banner-area overlay-box">
+            <div class="overlay "></div>
+            <div class="container">
+                <div class="banner-content-area text-white">
+                    <h1>Actualités</h1>
+                    <div class="breadcrumb-block">
+                        <ul class="list-inline">
+                            <li>
+                                <a href="{{ path('app_home') }}">Accueil</a>
+                            </li>
+                            <li>Actualités</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            {% endfor %}
-            {{knp_pagination_render(articles)}}
-        </div>
-    </section>
-    <!-- Blog Grid End -->
-</div>
-
-<style>
-    .content{
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-    }
-
-    .title{
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-    }
-</style>
+        </section>
+        <!-- Banner End -->
+        <!-- Blog Grid End -->
+        <section class="section-style-3 contact-style-1">
+            <div class="container">
+                {% for article in articles %}
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12 col-md-12 m-b30">
+                            <div class="blog-entry grid-post dzseth row m-lr0">
+                                <div class="entry-thumb col-lg-3 col-md-4 p-0">
+                                    <a href="{{ path('show.article', {'slug': article.getSlug()}) }}"><img
+                                                src={{ asset('uploads/media/articles/content/' ~ article.getImageFileName()) }} alt=""
+                                                class="img-cover"/></a>
+                                </div>
+                                <div class="blog-content col-lg-9 col-md-8">
+                                    <div class="blog-info">
+                                        <span>{{ article.getCreatedAttoString() }}</span>
+                                        Par {{ article.getAuthor() }}
+                                    </div>
+                                    <div class="blog-title"
+                                         style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;">
+                                        <h5>
+                                            <a href="{{ path('show.article', {'slug': article.getSlug()}) }}">{{ article.getTitle() }}</a>
+                                        </h5>
+                                    </div>
+                                    <p style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;">{{ article.getContent()|raw }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {{ knp_pagination_render(articles) }}
+            </div>
+        </section>
+        <!-- Blog Grid End -->
+    </div>
 {% endblock %}

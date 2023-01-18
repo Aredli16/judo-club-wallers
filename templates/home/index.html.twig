@@ -464,8 +464,10 @@
                                 <div class="item">
                                     <div class="blog-entry grid-post ">
                                         <div class="entry-thumb">
-                                            <img src="{{ asset('uploads/media/articles/content/' ~ article.imageFileName) }}"
-                                                 alt="">
+                                            <a href="{{ path('show.article', {slug: article.slug}) }}">
+                                                <img src="{{ asset('uploads/media/articles/content/' ~ article.imageFileName) }}"
+                                                     alt="">
+                                            </a>
                                         </div>
                                         <div class="blog-content">
                                             <div class="blog-info">
@@ -473,9 +475,11 @@
                                                 <a href="#">{{ article.author }}</a>
                                             </div>
                                             <div class="blog-title">
-                                                <h5><a href="#">{{ article.title }}</a></h5>
+                                                <h5>
+                                                    <a href="{{ path('show.article', {slug: article.slug}) }}">{{ article.title }}</a>
+                                                </h5>
                                             </div>
-                                            <p>{{ article.content }}</p>
+                                            <p style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;">{{ article.content }}</p>
                                         </div>
                                     </div>
                                 </div>
