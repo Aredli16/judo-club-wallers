@@ -30,7 +30,6 @@ class ArticleCrudController extends AbstractCrudController
                 ->onlyOnIndex(),
             ImageField::new('imageFileName')
                 ->onlyOnForms()
-                ->setBasePath('public/uploads/media/articles/content')
                 ->setUploadDir('public/uploads/media/articles/content')
         ];
     }
