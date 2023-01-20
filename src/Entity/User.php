@@ -35,7 +35,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $firstname = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatar = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -47,7 +47,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
-        $this->avatar = "default.png";
     }
 
     public function getId(): ?int
