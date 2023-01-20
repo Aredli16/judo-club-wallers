@@ -10,15 +10,16 @@ class UserUnitTest extends TestCase
 {
     public function testGettersAndSetters(): void
     {
-        $user = new User();
-        $user->setLastname('lastname');
-        $user->setFirstname('firstname');
-        $user->setEmail('test@email.com');
-        $user->setRoles(['ROLE_TEST']);
-        $user->setPassword('pswd');
-        $user->setAvatar('avatar');
-        $user->setPhoneNumber('000000');
-        $user->setCreatedAt(new DateTimeImmutable('2020-01-01'));
+        $user = (new User())
+            ->setLastname('lastname')
+            ->setFirstname('firstname')
+            ->setEmail('test@email.com')
+            ->setRoles(['ROLE_TEST'])
+            ->setPassword('pswd')
+            ->setAvatar('avatar')
+            ->setPhoneNumber('000000')
+            ->setAbout('about')
+            ->setCreatedAt(new DateTimeImmutable('2020-01-01'));
 
         $this->assertEquals('lastname', $user->getLastname());
         $this->assertEquals('test@email.com', $user->getEmail());
@@ -27,6 +28,7 @@ class UserUnitTest extends TestCase
         $this->assertEquals('pswd', $user->getPassword());
         $this->assertEquals('avatar', $user->getAvatar());
         $this->assertEquals('000000', $user->getPhoneNumber());
+        $this->assertEquals('about', $user->getAbout());
         $this->assertEquals(new DateTimeImmutable('2020-01-01'), $user->getCreatedAt());
     }
 
@@ -40,6 +42,7 @@ class UserUnitTest extends TestCase
         $this->assertClassHasAttribute('password', User::class);
         $this->assertClassHasAttribute('avatar', User::class);
         $this->assertClassHasAttribute('phone_number', User::class);
+        $this->assertClassHasAttribute('about', User::class);
         $this->assertClassHasAttribute('created_at', User::class);
     }
 
@@ -52,13 +55,13 @@ class UserUnitTest extends TestCase
         $this->assertEmpty($user->getLastname());
         $this->assertEmpty($user->getPassword());
         $this->assertEmpty($user->getPhoneNumber());
+        $this->assertEmpty($user->getAbout());
     }
 
     public function testIsNotEmpty(): void
     {
         $user = new User();
         $this->assertNotEmpty($user->getCreatedAt());
-        $this->assertNotEmpty($user->getAvatar());
         $this->assertNotEmpty($user->getRoles());
     }
 }

@@ -298,91 +298,41 @@
                         <div class="head-section col-md-12 text-center">
                             <h2>Nos enseignants</h2>
                             <div class="title-separator bg-primary"></div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the
-                                industry's standard dummy text ever since the been when an unknown printer.</p>
+                            <p>Découvrez nos enseignants diplomé d'état qui vous accompagneront dans votre
+                                apprentissage</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="team-box m-b10">
-                                <div class="box-img">
-                                    <a href="#"><img src="{{ asset('images/our-team/pic6.jpg') }}"/></a>
-                                </div>
-                                <div class="p-tb15 p-lr10 text-center">
-                                    <h5><a href="javascript:;">Pauline Liegas</a></h5>
-                                    <span class="member-position">Lorem Ipsum is simply dummy text of the printing and
-										typesetting</span>
-                                    <div class="m-t20">
-                                        <ul class="social-icon">
-                                            <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-linkedin"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-google-plus"></a></li>
-                                        </ul>
+                        {% for teacher in teachers %}
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="team-box m-b10">
+                                    <div class="box-img">
+                                        <a href="#">
+                                            {% if teacher.avatar is not null %}
+                                                <img
+                                                        src="{{ asset('uploads/media/users/content/' ~ teacher.avatar) }}"/>
+                                            {% else %}
+                                                <img
+                                                        src="{{ asset('images/default-avatar.png') }}"/>
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    <div class="p-tb15 p-lr10 text-center">
+                                        <h5><a href="#">{{ teacher.lastname }} {{ teacher.firstname }}</a>
+                                        </h5>
+                                        <span class="member-position">{{ teacher.about }}</span>
+                                        {#                                        <div class="m-t20"> #}
+                                        {#                                            <ul class="social-icon"> #}
+                                        {#                                                <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li> #}
+                                        {#                                                <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li> #}
+                                        {#                                                <li><a href="javascript:void(0);" class="fa fa-linkedin"></a></li> #}
+                                        {#                                                <li><a href="javascript:void(0);" class="fa fa-google-plus"></a></li> #}
+                                        {#                                            </ul> #}
+                                        {#                                        </div> #}
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="team-box  m-b10">
-                                <div class="box-img">
-                                    <a href="#"><img src="{{ asset('images/our-team/pic7.jpg') }}"/></a>
-                                </div>
-                                <div class="p-tb15 p-lr10 text-center">
-                                    <h5><a href="javascript:;">Fabien Dedise</a></h5>
-                                    <span class="member-position">Lorem Ipsum is simply dummy text of the printing and
-										typesetting</span>
-                                    <div class="m-t20">
-                                        <ul class="social-icon">
-                                            <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-linkedin"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-google-plus"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="team-box m-b10">
-                                <div class="box-img">
-                                    <a href="#"><img src="{{ asset('images/our-team/pic8.jpg') }}"/></a>
-                                </div>
-                                <div class="p-tb15 p-lr10 text-center">
-                                    <h5><a href="javascript:;">Eric Liegas</a></h5>
-                                    <span class="member-position">Lorem Ipsum is simply dummy text of the printing and
-										typesetting</span>
-                                    <div class="m-t20">
-                                        <ul class="social-icon">
-                                            <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-linkedin"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-google-plus"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="team-box m-b10">
-                                <div class="box-img">
-                                    <a href="#"><img src="{{ asset('images/our-team/pic9.jpg') }}"/></a>
-                                </div>
-                                <div class="p-tb15 p-lr10 text-center">
-                                    <h5><a href="javascript:;">Cyprien Lempereur</a></h5>
-                                    <span class="member-position">Lorem Ipsum is simply dummy text of the printing and
-										typesetting</span>
-                                    <div class="m-t20">
-                                        <ul class="social-icon">
-                                            <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-linkedin"></a></li>
-                                            <li><a href="javascript:void(0);" class="fa fa-google-plus"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </section>
