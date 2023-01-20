@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -43,7 +44,8 @@ class UserCrudController extends AbstractCrudController
             ChoiceField::new('roles')
                 ->setRequired(false)
                 ->setFormTypeOptions(['multiple' => true])
-                ->setTranslatableChoices(array_combine(array_keys($this->getParameter('security.role_hierarchy.roles')), array_keys($this->getParameter('security.role_hierarchy.roles'))))
+                ->setTranslatableChoices(array_combine(array_keys($this->getParameter('security.role_hierarchy.roles')), array_keys($this->getParameter('security.role_hierarchy.roles')))),
+            TextareaField::new('about')
         ];
     }
 

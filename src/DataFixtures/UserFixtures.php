@@ -33,10 +33,11 @@ class UserFixtures extends Fixture
         // Teacher user
         for ($i = 0; $i < 5; $i++) {
             $user = (new User())
-                ->setEmail('teacher' . $i . '@admin.com')
+                ->setEmail('teacher' . $i . '@teacher.com')
                 ->setPassword('teacher')
                 ->setLastname($faker->lastName)
                 ->setFirstname($faker->firstName)
+                ->setAbout($faker->text)
                 ->setRoles(['ROLE_TEACHER']);
             $user->setPassword($this->hasher->hashPassword($user, $user->getPassword()));
             $manager->persist($user);
