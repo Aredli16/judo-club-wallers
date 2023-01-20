@@ -8,6 +8,9 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class UserFixtures extends Fixture
 {
     public function __construct(
