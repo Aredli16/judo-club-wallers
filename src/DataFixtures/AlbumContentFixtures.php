@@ -27,8 +27,7 @@ class AlbumContentFixtures extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager): void
     {
-        // Remove all image into uploads/media/albums/content folder
-        $this->removeContentFolder();
+        $this->removeContentFolder(); // Remove all image in uploads/media/albums/content folder
 
         for ($i = 0; $i <= self::FILE_CONTENT_GENERATED; $i++) {
             /** @noinspection PhpParamsInspection */
@@ -49,12 +48,18 @@ class AlbumContentFixtures extends Fixture implements DependentFixtureInterface
 
     private function removeContentFolder()
     {
-        $files = glob('public/uploads/media/albums/content/*');
+        $dirname = 'public/uploads/media/albums/content';
 
-        foreach ($files as $file) {
-            if (is_file($file)) {
-                unlink($file);
+        if (is_dir($dirname)) {
+            $files = glob($dirname . '/*');
+
+            foreach ($files as $file) {
+                if (is_file($file)) {
+                    unlink($file);
+                }
             }
+        } else {
+            mkdir($dirname, recursive: true);
         }
     }
 

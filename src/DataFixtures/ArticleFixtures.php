@@ -25,7 +25,7 @@ class ArticleFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
-        $this->removeContentFolder(); // Remove all image into uploads/media/articles/content folder
+        $this->removeContentFolder(); // Remove all image in uploads/media/articles/content folder
         $faker = Factory::create('fr_FR');
 
         for ($i = 0; $i < 10; $i++) {
@@ -34,7 +34,6 @@ class ArticleFixtures extends Fixture
             $article->setContent($faker->realText());
             $article->setAuthor($faker->firstName());
 
-            // Image upload
             $article->setImageFileName(md5(uniqid()) . '.jpg');
             $response = $this->client->request('GET', 'https://picsum.photos/1920/1080');
             $fileHandler = fopen('public/uploads/media/articles/content/' . $article->getImageFileName(), 'w');
@@ -49,12 +48,18 @@ class ArticleFixtures extends Fixture
 
     private function removeContentFolder()
     {
-        $files = glob('public/uploads/media/articles/content/*');
+        $dirname = 'public/uploads/media/articles/content';
 
-        foreach ($files as $file) {
-            if (is_file($file)) {
-                unlink($file);
+        if (is_dir($dirname)) {
+            $files = glob($dirname . '/*');
+
+            foreach ($files as $file) {
+                if (is_file($file)) {
+                    unlink($file);
+                }
             }
+        } else {
+            mkdir($dirname, recursive: true);
         }
     }
 }
