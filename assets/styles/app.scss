@@ -2,9 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 
 body {
   font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
 }
 
 /* NAVBAR */
@@ -33,4 +46,20 @@ body {
 
 .navlink li a:hover::after {
   @apply scale-100;
+}
+
+/* FOOTER */
+.footer-links li, .footer-info li {
+  @apply my-3;
+}
+
+.footer-links li a:hover {
+  color: #d43a33;
+}
+
+.footer-links li a::before {
+  content: "";
+  @apply border-white inline-block -rotate-45 mr-3;
+  border-width: 0 3px 3px 0;
+  padding: 4px;
 }

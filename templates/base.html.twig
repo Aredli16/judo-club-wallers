@@ -68,5 +68,29 @@
 <main>
     {% block body %}{% endblock %}
 </main>
+<footer>
+    <div class="bg-[#050505] p-10 text-white flex justify-evenly">
+        <div>
+            <h3>Liens</h3>
+            <ul class="footer-links">
+                <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                <li><a href="{{ path('app_about') }}">Le Club</a></li>
+                <li><a href="{{ path('app_article') }}">Actualité</a></li>
+                <li><a href="{{ path('app_album') }}">Photos</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <ul class="footer-info">
+                <li><i class="fa-sharp fa-solid fa-location-dot"></i> Rue Jean Jaurès, 59135 Wallers</li>
+                <li><i class="fa-solid fa-phone"></i> /</li>
+                <li><i class="fa-solid fa-envelope"></i> judo-club-wallers@gmail.com</li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-center bg-gray-800 text-white p-3">
+        <h6>&copy; 2023. Tous droits réservé</h6>
+    </div>
+</footer>
 </body>
 </html>
