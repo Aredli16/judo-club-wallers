@@ -1,4 +1,119 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {# HEADER SECTION #}
+    <section class="relative bg-cover bg-blend-luminosity"
+             style="height: calc(100vh - 128px); background: #000000 url('{{ asset('images/header.jpg') }}') no-repeat center;">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white">
+            <h1 class="tracking-wide font-bold">Judo Club Wallers</h1>
+            <p>Bienvenue sur le nouveau site du Judo Club Wallers.
+                Découvrez maintenant les
+                dernières actualités, les
+                dernières photos et bien plus encore...</p>
+            <a href="#"
+               class="inline-block mt-2 rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-[#d43a33] shadow-sm hover:bg-[#ebd2d1]">En
+                savoir plus</a>
+        </div>
+
+        <div class="custom-shape-divider-bottom-1674683020">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                 preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                      opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                      opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                      class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    {# ABOUT SECTION #}
+    <section class="container">
+        <h2>Le Club</h2>
+        <div class="flex ">
+            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id iure iusto laborum minus, natus
+                nostrum officia similique unde vitae. Aut autem maxime natus non vero? Dignissimos, eum ipsa? Aliquid,
+                quod!</p>
+            <img class="w-72 max-h-full object-cover ml-5" src="{{ asset('images/about.jpg') }}" alt="about">
+        </div>
+    </section>
+
+    {# TEACHER SECTION #}
+    <section class="container ">
+        <h2 class="text-center">Les enseignants</h2>
+        <div class="grid grid-cols-4 gap-5 text-center">
+            {% for teacher in teachers %}
+                <div>
+                    {% if teacher.avatar is not null %}
+                        <img class="max-h-full" src="{{ asset('uploads/media/users/content/' ~teacher.avatar) }}"
+                             alt="teacher-{{ teacher.firstname }}">
+                    {% else %}
+                        <img class="max-h-full" src="{{ asset('images/default-avatar.png') }}"
+                             alt="teacher-{{ teacher.firstname }}">
+                    {% endif %}
+                    <h5>{{ teacher.lastname }} {{ teacher.firstname }}</h5>
+                    <p class="text-gray-500">{{ teacher.about }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    {# ALBUM SECTION #}
+    <section class="container">
+        <h2>Les derniers albums photos</h2>
+        <div class="gallery grid grid-cols-4 grid-rows-3 gap-3">
+            {% for album in latestAlbum %}
+                {% if loop.index0 == 0 %}
+                    <div class="album-item col-span-2 row-span-2">
+                        <a href="{{ path('app_show.album', {slug: album.slug}) }}">
+                            <img
+                                    src="{{ asset('uploads/media/albums/content/' ~ album.content.get(0).filename) }}"
+                                    alt="album-{{ album.title }}">
+                            <p>{{ album.title }}</p>
+                        </a>
+                    </div>
+                {% elseif loop.index0 == 1 %}
+                    <div class="album-item col-span-2 row-span-2">
+                        <a href="{{ path('app_show.album', {slug: album.slug}) }}">
+                            <img
+                                    src="{{ asset('uploads/media/albums/content/' ~ album.content.get(0).filename) }}"
+                                    alt="album-{{ album.title }}">
+                            <p>{{ album.title }} Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Amet deleniti
+                                dolore dolorum facere, mollitia quae quis quisquam sapiente sequi vel? Ab deleniti
+                                doloribus eos explicabo, incidunt nam. Nam, odio, quaerat?</p>
+                        </a>
+                    </div>
+                {% else %}
+                    <a class="album-item" href="{{ path('app_show.album', {slug: album.slug}) }}">
+                        <img
+                                src="{{ asset('uploads/media/albums/content/' ~ album.content.get(0).filename) }}"
+                                alt=album-{{ album.title }}"">
+                        <p>{{ album.title }}</p>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+
+    {# ARTICLE SECTION #}
+    <section class="container">
+        <h2>L'actualité</h2>
+        <div class="grid grid-cols-3 gap-5">
+            {% for article in latestArticle %}
+                <a class="article-item border" href="{{ path('show.article', {slug: article.slug}) }}">
+                    <img class="max-h-full"
+                         src="{{ asset('uploads/media/articles/content/' ~ article.imageFileName) }}"
+                         alt="article-{{ article.title }}">
+                    <div class="p-5">
+                        <p class="text-gray-500 line-clamp-1">{{ article.createdAtToString }}
+                            par {{ article.author }}</p>
+                        <h4 class="line-clamp-1 my-2">{{ article.title }}</h4>
+                        <p class="line-clamp-4">{{ article.content }} lorem</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}

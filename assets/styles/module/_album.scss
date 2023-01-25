@@ -1,0 +1,19 @@
+.gallery img {
+  @apply block object-cover w-full h-full transition-all;
+}
+
+.album-item {
+  @apply relative overflow-hidden rounded-lg;
+}
+
+.album-item p {
+  @apply absolute bottom-0 bg-[#d43a33] w-full p-4 bg-opacity-50 text-white transition-transform translate-y-full;
+}
+
+.album-item:hover p {
+  @apply translate-y-0;
+}
+
+.album-item:hover img {
+  @apply scale-110 grayscale;
+}

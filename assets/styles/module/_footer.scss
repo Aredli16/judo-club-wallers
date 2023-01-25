@@ -1,0 +1,14 @@
+.footer-links li, .footer-info li {
+  @apply my-3;
+}
+
+.footer-links li a:hover {
+  color: #d43a33;
+}
+
+.footer-links li a::before {
+  content: "";
+  @apply border-white inline-block -rotate-45 mr-3;
+  border-width: 0 3px 3px 0;
+  padding: 4px;
+}
