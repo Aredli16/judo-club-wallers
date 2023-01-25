@@ -1,45 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ album.title }}{% endblock %}
+
 {% block body %}
-    <div class="main-content">
-        <!-- Banner -->
-        <section class="banner-area overlay-box">
-            <div class="overlay "></div>
-            <div class="container">
-                <div class="banner-content-area text-white">
-                    <h1>{{ album.title }}</h1>
-                    <div class="breadcrumb-block">
-                        <ul class="list-inline">
-                            <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                            <li><a href="{{ path('app_album') }}">Albums photos</a></li>
-                            <li>{{ album.title }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Banner End -->
-        <!-- Gallery -->
-        <section class="section-style-3 gallery">
-            <div class="container">
-                <div class="row">
-                    {% for content in album.content %}
-                        <div class="col-md-6 col-lg-3 col-sm-6">
-                            <div class="content-box m-b30">
-                                <div class="box-inner overlay-box gallery-box">
-                                    <a href="{{ asset('uploads/media/albums/content/' ~ content.filename) }}"
-                                       title="{{ album.title }}"
-                                       data-source="images/our-work/pic1.jpg" class="mfp-box">
-                                        <img src="{{ asset('uploads/media/albums/content/' ~ content.filename) }}"
-                                             alt="{{ content.filename }}">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-        <!-- Gallery End -->
-    </div>
 {% endblock %}

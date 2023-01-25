@@ -1,49 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Photos{% endblock %}
+
 {% block body %}
-    <div class="main-content">
-        <!-- Banner -->
-        <section class="banner-area overlay-box">
-            <div class="overlay "></div>
-            <div class="container">
-                <div class="banner-content-area text-white">
-                    <h1>Albums photos</h1>
-                    <div class="breadcrumb-block">
-                        <ul class="list-inline">
-                            <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                            <li>Albums photos</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Banner End -->
-        <!-- Gallery -->
-        <section class="section-style-3 gallery">
-            <div class="container">
-                <div class="row">
-                    {% for album in albums %}
-                        <div class="col-md-6 col-lg-4 col-sm-6">
-                            <div class="content-box m-b30">
-                                <div class="box-inner overlay-box gallery-box">
-                                    <a href="{{ path('app_show.album', {'slug': album.slug}) }}">
-                                        <img src="{{ asset('uploads/media/albums/content/' ~ album.content.get(0).filename) }}"
-                                             alt="{{ album.title }}">
-                                    </a>
-                                    <div class="box-info overlay hover">
-                                        <h6 class="m-b0"><a
-                                                    href="{{ path('app_show.album', {'slug': album.slug}) }}">{{ album.title }}
-                                                <i
-                                                        class="fa fa-angle-right pull-right fs-18 m-t5"></i></a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-                {{ knp_pagination_render(albums) }}
-            </div>
-        </section>
-        <!-- Gallery End -->
-    </div>
 {% endblock %}
