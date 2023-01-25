@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+/* NAVBAR */
+.navlink {
+  @apply flex;
+}
+
+.navlink ul {
+  @apply mx-4;
+}
+
+.navlink li {
+  @apply ml-4;
+}
+
+.navlink li a {
+  @apply uppercase relative;
+  font-size: 1.25em;
+}
+
+.navlink li a::after {
+  @apply transition-transform absolute block w-full h-px scale-x-0 origin-left bg-[#d43a33];
+  content: "";
+  bottom: -3px;
+}
+
+.navlink li a:hover::after {
+  @apply scale-100;
+}
