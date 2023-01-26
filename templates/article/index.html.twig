@@ -3,4 +3,32 @@
 {% block title %}Actualité{% endblock %}
 
 {% block body %}
+    <section class="relative h-[350px] bg-blend-darken bg-cover text-white"
+             style="background: rgba(0,0,0,0.9) url('{{ asset('images/header-2.jpg') }}') no-repeat center;">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <h1>Actualités</h1>
+            <ul class="flex justify-center">
+                <li class="text-gray-300"><a class="after:content-['/'] after:mx-3" href="{{ path('app_home') }}">Accueil</a>
+                </li>
+                <li>Actualité</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="container">
+        {% for article in articles %}
+            <a href="{{ path('show.article', {slug: article.slug}) }}" class="flex border my-5 overflow-hidden">
+                <img class="h-72 w-72 object-cover max-h-full"
+                     src="{{ asset('uploads/media/articles/content/' ~ article.imageFileName) }}"
+                     alt="article-{{ article.title }}">
+                <div class="p-5">
+                    <p class="text-gray-500 line-clamp-1">{{ article.createdAtToString }}
+                        par {{ article.author }}</p>
+                    <h4 class="line-clamp-1 my-2 tracking-wide">{{ article.title }}</h4>
+                    <p class="line-clamp-5">{{ article.content }}</p>
+                </div>
+            </a>
+        {% endfor %}
+        {{ knp_pagination_render(articles) }}
+    </section>
 {% endblock %}

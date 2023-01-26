@@ -2,8 +2,8 @@
 
 {% block body %}
     {# HEADER SECTION #}
-    <section class="relative bg-cover bg-blend-luminosity"
-             style="height: calc(100vh - 128px); background: #000000 url('{{ asset('images/header.jpg') }}') no-repeat center;">
+    <section class="relative bg-blend-luminosity"
+             style="height: calc(100vh - 28px); background: #000000 url('{{ asset('images/header.jpg') }}') no-repeat center; background-size: cover">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white">
             <h1 class="tracking-wide font-bold">Judo Club Wallers</h1>
             <p>Bienvenue sur le nouveau site du Judo Club Wallers.
@@ -31,7 +31,7 @@
     {# ABOUT SECTION #}
     <section class="container">
         <h2>Le Club</h2>
-        <div class="flex ">
+        <div class="flex">
             <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id iure iusto laborum minus, natus
                 nostrum officia similique unde vitae. Aut autem maxime natus non vero? Dignissimos, eum ipsa? Aliquid,
                 quod!</p>
@@ -110,7 +110,7 @@
                         <p class="text-gray-500 line-clamp-1">{{ article.createdAtToString }}
                             par {{ article.author }}</p>
                         <h4 class="line-clamp-1 my-2">{{ article.title }}</h4>
-                        <p class="line-clamp-4">{{ article.content }} lorem</p>
+                        <p class="line-clamp-4">{{ article.content }}</p>
                     </div>
                 </a>
             {% endfor %}
