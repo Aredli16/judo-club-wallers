@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <title>Connexion</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body class="h-screen bg-gray-100">
+<div class="flex items-center justify-center h-full">
+    <div class="bg-white shadow rounded-lg">
+        <div class="flex">
+            <img class="max-h-full rounded-l-lg w-72 object-cover"
+                 src="{{ asset('uploads/media/albums/content/' ~image.fileName) }}"
+                 alt="photo">
+            <div class="p-5 text-center">
+                <a href="{{ path('app_home') }}">
+                    <img class="m-auto w-24" src="{{ asset('images/logo.png') }}" alt="logo">
+                </a>
+                <h2>Se Connecter</h2>
+                <form method="post">
+                    {% if error %}
+                        <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="bg-indigo-100 rounded-lg py-5 px-6 mb-4 text-base text-indigo-700 mb-3"
+                             role="alert">
+                            You are logged in as {{ app.user.userIdentifier }}, <a
+                                    href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+
+                    <input
+                            type="email"
+                            value="{{ last_username }}"
+                            name="email"
+                            id="inputEmail"
+                            placeholder="Adresse Email"
+                            autocomplete="email"
+                            class="form-control"
+                            required autofocus
+                    />
+                    <input
+                            type="password"
+                            name="password"
+                            id="inputPassword"
+                            autocomplete="current-password"
+                            placeholder="Mot de passe"
+                            class="form-control my-4 p-2"
+                            required
+                    />
+                    <button class="form-button">Se connecter</button>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
