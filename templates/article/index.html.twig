@@ -1,60 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!
-{% endblock %}
+{% block title %}Actualité{% endblock %}
 
 {% block body %}
-    <div class="main-content">
-        <!-- Banner -->
-        <section class="banner-area overlay-box">
-            <div class="overlay "></div>
-            <div class="container">
-                <div class="banner-content-area text-white">
-                    <h1>Actualités</h1>
-                    <div class="breadcrumb-block">
-                        <ul class="list-inline">
-                            <li>
-                                <a href="{{ path('app_home') }}">Accueil</a>
-                            </li>
-                            <li>Actualités</li>
-                        </ul>
-                    </div>
+    <section class="relative h-[350px] bg-blend-darken text-white"
+             style="background: rgba(0,0,0,0.9) url('{{ asset('images/header-2.jpg') }}') no-repeat center; background-size: cover">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <h1>Actualités</h1>
+            <ul class="flex justify-center">
+                <li class="text-gray-300"><a class="after:content-['/'] after:mx-3" href="{{ path('app_home') }}">Accueil</a>
+                </li>
+                <li>Actualité</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="container">
+        {% for article in articles %}
+            <a href="{{ path('show.article', {slug: article.slug}) }}" class="flex border my-5 overflow-hidden">
+                <img class="h-72 w-72 object-cover max-h-full"
+                     src="{{ asset('uploads/media/articles/content/' ~ article.imageFileName) }}"
+                     alt="article-{{ article.title }}">
+                <div class="p-5">
+                    <p class="text-gray-500 line-clamp-1">{{ article.createdAtToString }}
+                        par {{ article.author }}</p>
+                    <h4 class="line-clamp-1 my-2 tracking-wide">{{ article.title }}</h4>
+                    <p class="line-clamp-5">{{ article.content|raw }}</p>
                 </div>
-            </div>
-        </section>
-        <!-- Banner End -->
-        <!-- Blog Grid End -->
-        <section class="section-style-3 contact-style-1">
-            <div class="container">
-                {% for article in articles %}
-                    <div class="row">
-                        <div class="col-lg-12 col-xl-12 col-md-12 m-b30">
-                            <div class="blog-entry grid-post dzseth row m-lr0">
-                                <div class="entry-thumb col-lg-3 col-md-4 p-0">
-                                    <a href="{{ path('show.article', {'slug': article.getSlug()}) }}"><img
-                                                src={{ asset('uploads/media/articles/content/' ~ article.getImageFileName()) }} alt=""
-                                                class="img-cover"/></a>
-                                </div>
-                                <div class="blog-content col-lg-9 col-md-8">
-                                    <div class="blog-info">
-                                        <span>{{ article.getCreatedAttoString() }}</span>
-                                        Par {{ article.getAuthor() }}
-                                    </div>
-                                    <div class="blog-title"
-                                         style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;">
-                                        <h5>
-                                            <a href="{{ path('show.article', {'slug': article.getSlug()}) }}">{{ article.getTitle() }}</a>
-                                        </h5>
-                                    </div>
-                                    <p style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;">{{ article.getContent()|raw }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-                {{ knp_pagination_render(articles) }}
-            </div>
-        </section>
-        <!-- Blog Grid End -->
-    </div>
+            </a>
+        {% endfor %}
+        {{ knp_pagination_render(articles) }}
+    </section>
 {% endblock %}

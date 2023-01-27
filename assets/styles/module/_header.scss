@@ -1,0 +1,47 @@
+.nav-links {
+  @apply flex;
+}
+
+.nav-links ul {
+  @apply mx-4;
+}
+
+.nav-links li {
+  @apply ml-4;
+}
+
+.nav-links li a {
+  @apply uppercase relative;
+  font-size: 1.25em;
+}
+
+.nav-links li a::after {
+  @apply transition-transform absolute block w-full h-px scale-x-0 origin-left bg-[#d43a33];
+  content: "";
+  bottom: -3px;
+}
+
+.nav-links li a:hover::after {
+  @apply scale-100;
+}
+
+.custom-shape-divider-bottom-1674683020 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1674683020 svg {
+  position: relative;
+  display: block;
+  width: calc(119% + 1.3px);
+  height: 100px;
+}
+
+.custom-shape-divider-bottom-1674683020 .shape-fill {
+  fill: #FFFFFF;
+}

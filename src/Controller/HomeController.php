@@ -19,7 +19,7 @@ class HomeController extends AbstractController
         UserRepository    $userRepository
     ): Response
     {
-        $latestAlbum = $albumRepository->findLatestAlbum(3);
+        $latestAlbum = $albumRepository->findLatestAlbum(6);
         $latestArticle = $articleRepository->findLatestArticles(3);
         $teachers = $userRepository->findByRole('ROLE_TEACHER');
 

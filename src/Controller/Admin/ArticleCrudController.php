@@ -37,7 +37,7 @@ class ArticleCrudController extends AbstractCrudController
     public function createEntity(string $entityFqcn)
     {
         return (new Article())
-            ->setAuthor("Username");
+            ->setAuthor($this->getUser()->getFirstName());
     }
 
     /**

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "base/base";
+@import "layout/layout";
+@import "module/header";
+@import "module/footer";
+@import "module/album";
+@import "module/article";
+@import "module/form";

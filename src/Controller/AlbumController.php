@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Album;
 use App\Repository\AlbumRepository;
+use App\Repository\ArticleRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,16 +26,17 @@ class AlbumController extends AbstractController
             'albums' => $paginator->paginate(
                 $this->albumRepository->findAll(),
                 $request->query->getInt('page', 1),
-                12
+                40
             )
         ]);
     }
 
     #[Route('/album/{slug}', name: 'app_show.album', methods: ['GET'])]
-    public function showAlbum(Album $album): Response
+    public function showAlbum(Album $album, ArticleRepository $articleRepository): Response
     {
         return $this->render('album/show.html.twig', [
-            'album' => $album
+            'album' => $album,
+            'latest_articles' => $articleRepository->findLatestArticles(3)
         ]);
     }
 }

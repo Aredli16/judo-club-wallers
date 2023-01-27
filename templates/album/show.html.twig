@@ -1,45 +1,49 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ album.title }}{% endblock %}
+
 {% block body %}
-    <div class="main-content">
-        <!-- Banner -->
-        <section class="banner-area overlay-box">
-            <div class="overlay "></div>
-            <div class="container">
-                <div class="banner-content-area text-white">
-                    <h1>{{ album.title }}</h1>
-                    <div class="breadcrumb-block">
-                        <ul class="list-inline">
-                            <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                            <li><a href="{{ path('app_album') }}">Albums photos</a></li>
-                            <li>{{ album.title }}</li>
-                        </ul>
+    <section class="relative h-[350px] bg-blend-darken text-white"
+             style="background: rgba(0,0,0,0.9) url('{{ asset('images/header-2.jpg') }}') no-repeat center ; background-size: cover">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <h1>{{ album.title }}</h1>
+            <ul class="flex justify-center">
+                <li class="text-gray-300"><a class="after:content-['/'] after:mx-3" href="{{ path('app_home') }}">Accueil</a>
+                </li>
+                <li class="text-gray-300"><a class="after:content-['/'] after:mx-3" href="{{ path('app_album') }}">Photos</a>
+                </li>
+                <li>{{ album.title }}</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="container flex">
+        <div class="flex-1">
+            <div class="gallery grid grid-cols-2 gap-3">
+                {% for photo in album.content %}
+                    <img src="{{ asset('uploads/media/albums/content/' ~ photo.filename) }}"
+                         alt="photo">
+                {% endfor %}
+            </div>
+        </div>
+        <aside class="w-60 ml-5">
+            <h3 class="mb-3">Dernières actualités</h3>
+            {% for last_article in latest_articles %}
+                <a class="flex mb-5" href="{{ path('show.article', {slug: last_article.slug}) }}">
+                    <img class="h-28 w-28 object-cover mr-2"
+                         src="{{ asset('uploads/media/articles/content/' ~ last_article.imageFileName) }}"
+                         alt="article-{{ last_article.title }}">
+                    <div>
+                        <h6 class="line-clamp-1">{{ last_article.title }} Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit. Amet
+                            dolores inventore ipsam libero nam perspiciatis quia tempora? Aliquam doloremque error
+                            facere harum, id ipsa magni nulla optio saepe sunt, veritatis.</h6>
+                        <p class="text-gray-500 line-clamp-1">{{ last_article.createdAtToString }}
+                            par {{ last_article.author }}</p>
+                        <p class="text-gray-500 line-clamp-2">{{ last_article.content|raw }}</p>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- Banner End -->
-        <!-- Gallery -->
-        <section class="section-style-3 gallery">
-            <div class="container">
-                <div class="row">
-                    {% for content in album.content %}
-                        <div class="col-md-6 col-lg-3 col-sm-6">
-                            <div class="content-box m-b30">
-                                <div class="box-inner overlay-box gallery-box">
-                                    <a href="{{ asset('uploads/media/albums/content/' ~ content.filename) }}"
-                                       title="{{ album.title }}"
-                                       data-source="images/our-work/pic1.jpg" class="mfp-box">
-                                        <img src="{{ asset('uploads/media/albums/content/' ~ content.filename) }}"
-                                             alt="{{ content.filename }}">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-        <!-- Gallery End -->
-    </div>
+                </a>
+            {% endfor %}
+        </aside>
+    </section>
 {% endblock %}

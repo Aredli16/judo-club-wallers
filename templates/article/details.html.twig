@@ -1,88 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!
-{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block body %}
-
-<div class="main-content">
-    <section class="section-style">
-        <div class="container">
-            <div class="row">
-                <!-- Left part start -->
-                <div class="col-lg-9 col-md-12 m-b30">
-                    <!-- blog start -->
-                    <div class="blog-entry grid-post m-b30">
-                        <div class="entry-thumb">
-                            <img src={{asset('uploads/media/articles/content/' ~ article.getImageFileName())}} alt="" />
-                        </div>
-                        <div class="blog-content">
-                            <div class="clearfix m-b10">
-                                <div class="blog-info pull-right">
-                                    <span>{{article.getCreatedAtToString}}</span>
-                                    Par {{article.getAuthor()}}
-                                </div>
-                            </div>
-                            <div class="blog-title">
-                                <h5>{{article.getTitle()}}</h5>
-                            </div>
-
-                            <p>{{article.getContent()|raw}}</p>
-
-                        </div>
-                    </div>
-                    <!-- blog END -->
-                </div>
-                <!-- Left part END -->
-                <!-- Side bar start -->
-                <div class="col-md-12 col-lg-3">
-                    <aside class="side-bar">
-                        <div class="widget m-b30">
-                            <h4>Dernières Actualités</h4>
-                            <div class="widget-post-bx">
-                                {% for latest_article in latest_articles %}
-                                <div class="media m-b15">
-                                    <a href="{{path('show.article', {'slug': latest_article.getSlug()})}}"><img
-                                            src={{asset('uploads/media/articles/content/' ~ latest_article.getImageFileName())}}
-                                            class="d-flex mr-3 mw80" alt=""></a>
-                                    <div class="media-body">
-                                        <h6 class="mt-0 m-b5 title"><a
-                                                href="{{path('show.article', {'slug': latest_article.getSlug()})}}">{{latest_article.getTitle()}}</a>
-                                        </h6>
-                                        <div class="blog-info">
-                                            {{latest_article.getCreatedAtToString}}
-                                        </div>
-                                        <div class="content">
-                                            {{latest_article.getContent()|raw}}
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </aside>
-                </div>
-                <!-- Side bar END -->
+    <div class="container flex">
+        <section class="flex-1 border">
+            <img class="w-full h-96 object-cover"
+                 src="{{ asset('uploads/media/articles/content/' ~article.imageFileName) }}"
+                 alt="article-{{ article.title }}">
+            <div class="p-5">
+                <p class="text-gray-500 text-end">{{ article.createdAtToString }}
+                    par {{ article.author }}</p>
+                <h3 class="font-bold">{{ article.title }}</h3>
+                <p>{{ article.content|raw }}</p>
             </div>
-        </div>
-    </section>
-</div>
-
-<style>
-    .content {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-    }
-
-    .title {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-    }
-</style>
+        </section>
+        <aside class="w-60 ml-5">
+            <h3 class="mb-3">Dernières actualités</h3>
+            {% for last_article in latest_articles %}
+                <a class="flex mb-5" href="{{ path('show.article', {slug: last_article.slug}) }}">
+                    <img class="h-28 w-28 object-cover mr-2"
+                         src="{{ asset('uploads/media/articles/content/' ~ last_article.imageFileName) }}"
+                         alt="article-{{ last_article.title }}">
+                    <div>
+                        <h6 class="line-clamp-1">{{ last_article.title }} Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit. Amet
+                            dolores inventore ipsam libero nam perspiciatis quia tempora? Aliquam doloremque error
+                            facere harum, id ipsa magni nulla optio saepe sunt, veritatis.</h6>
+                        <p class="text-gray-500 line-clamp-1">{{ last_article.createdAtToString }}
+                            par {{ last_article.author }}</p>
+                        <p class="text-gray-500 line-clamp-2">{{ last_article.content|raw }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </aside>
+    </div>
 {% endblock %}
