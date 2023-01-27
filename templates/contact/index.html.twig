@@ -3,4 +3,62 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
+    <section class="relative h-[350px] bg-blend-darken text-white"
+             style="background: rgba(0,0,0,0.9) url('{{ asset('images/header-2.jpg') }}') no-repeat center ; background-size: cover">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <h1>Contact</h1>
+            <ul class="flex justify-center">
+                <li class="text-gray-300"><a class="after:content-['/'] after:mx-3" href="{{ path('app_home') }}">Accueil</a>
+                </li>
+                <li>Contact</li>
+            </ul>
+        </div>
+    </section>
+    <section class="container grid grid-cols-3 gap-5">
+        <div class="border h-60 max-h-full p-5 flex justify-center items-center flex-col">
+            <i class="fa-solid fa-map-location-dot text-4xl"></i>
+            <h3 class="my-5">Adresse Postale</h3>
+            <p class="text-gray-500">Rue Jean Jaurès, 59135 Wallers</p>
+        </div>
+        <div class="border h-60 max-h-full p-5 flex justify-center items-center flex-col">
+            <i class="fa-solid fa-at text-4xl"></i>
+            <h3 class="my-5">Email</h3>
+            <p class="text-gray-500">judo-club-wallers@gmail.com</p>
+        </div>
+        <div class="border h-60 max-h-full p-5 flex justify-center items-center flex-col">
+            <i class="fa-solid fa-phone text-4xl"></i>
+            <h3 class="my-5">Téléphone</h3>
+            <p class="text-gray-500">Non défini</p>
+        </div>
+    </section>
+    <section class="container flex">
+        <div class="bg-gray-100 p-5 basis-1/2 mr-3">
+            <h3 class="mb-5">Envoyer nous un message</h3>
+            {{ form_start(form) }}
+            <div class="flex justify-between">
+                <div class="basis-1/2 mr-2">
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="basis-1/2 ml-2">
+                    {{ form_widget(form.subject) }}
+                </div>
+            </div>
+            <div class="my-5">
+                {{ form_widget(form.message) }}
+            </div>
+            <div class="my-5">
+                {{ form_widget(form.files) }}
+            </div>
+            <div class="mt-5">
+                {{ form_widget(form.submit) }}
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+        <div class="basis-1/2 ml-3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10177.907131238375!2d3.3935704!3d50.37631!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9985ca123a9e35a!2sJudo%20Ju-Jitsu%20PPG%20Club%20Wallers!5e0!3m2!1sfr!2sfr!4v1672615238406!5m2!1sfr!2sfr"
+                    class=" h-full" style="border:0; width:100%; min-height:350px;"
+                    allowfullscreen></iframe>
+        </div>
+    </section>
 {% endblock %}
