@@ -5,13 +5,14 @@
 {% block body %}
     <div class="container flex">
         <section class="flex-1 border">
-            <img src="{{ asset('uploads/media/articles/content/' ~article.imageFileName) }}"
+            <img class="w-full h-96 object-cover"
+                 src="{{ asset('uploads/media/articles/content/' ~article.imageFileName) }}"
                  alt="article-{{ article.title }}">
             <div class="p-5">
                 <p class="text-gray-500 text-end">{{ article.createdAtToString }}
                     par {{ article.author }}</p>
                 <h3 class="font-bold">{{ article.title }}</h3>
-                <p>{{ article.content }}</p>
+                <p>{{ article.content|raw }}</p>
             </div>
         </section>
         <aside class="w-60 ml-5">
@@ -28,7 +29,7 @@
                             facere harum, id ipsa magni nulla optio saepe sunt, veritatis.</h6>
                         <p class="text-gray-500 line-clamp-1">{{ last_article.createdAtToString }}
                             par {{ last_article.author }}</p>
-                        <p class="text-gray-500 line-clamp-2">{{ last_article.content }}</p>
+                        <p class="text-gray-500 line-clamp-2">{{ last_article.content|raw }}</p>
                     </div>
                 </a>
             {% endfor %}

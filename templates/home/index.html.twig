@@ -103,14 +103,14 @@
         <div class="grid grid-cols-3 gap-5">
             {% for article in latestArticle %}
                 <a class="article-item border" href="{{ path('show.article', {slug: article.slug}) }}">
-                    <img class="max-h-full"
+                    <img class="w-full h-72 object-cover"
                          src="{{ asset('uploads/media/articles/content/' ~ article.imageFileName) }}"
                          alt="article-{{ article.title }}">
                     <div class="p-5">
                         <p class="text-gray-500 line-clamp-1">{{ article.createdAtToString }}
                             par {{ article.author }}</p>
                         <h4 class="line-clamp-1 my-2">{{ article.title }}</h4>
-                        <p class="line-clamp-4">{{ article.content }}</p>
+                        <p class="line-clamp-4">{{ article.content|raw }}</p>
                     </div>
                 </a>
             {% endfor %}
