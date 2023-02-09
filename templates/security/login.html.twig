@@ -14,57 +14,64 @@
     {% endblock %}
 </head>
 <body class="h-screen bg-gray-100">
-<div class="flex items-center justify-center h-full">
-    <div class="bg-white shadow rounded-lg">
-        <div class="flex">
-            <img class="max-h-full rounded-l-lg w-72 object-cover"
-                 src="{{ asset('uploads/media/albums/content/' ~image.fileName) }}"
-                 alt="photo">
-            <div class="p-5 text-center">
-                <a href="{{ path('app_home') }}">
-                    <img class="m-auto w-24" src="{{ asset('images/logo.png') }}" alt="logo">
-                </a>
-                <h2>Se Connecter</h2>
-                <form method="post">
-                    {% if error %}
-                        <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
-                            {{ error.messageKey|trans(error.messageData, 'security') }}
-                        </div>
-                    {% endif %}
+<div class="flex flex-col items-center justify-center h-full">
+    <div class="h-[40em] flex bg-white shadow-2xl rounded-lg m-5">
+        <img class="max-md:hidden rounded-l-lg w-[30em] object-cover"
+             src="{{ asset('uploads/media/albums/content/' ~image.fileName) }}"
+             alt="photo">
+        <div class="p-5 flex flex-col justify-center">
+            <a href="{{ path('app_home') }}">
+                <img class="m-auto w-24" src="{{ asset('images/logo.png') }}" alt="logo">
+            </a>
+            <h2 class="font-bold my-10 self-center">Connectez-vous</h2>
+            <form method="post">
+                {% if error %}
+                    <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
 
-                    {% if app.user %}
-                        <div class="bg-indigo-100 rounded-lg py-5 px-6 mb-4 text-base text-indigo-700 mb-3"
-                             role="alert">
-                            You are logged in as {{ app.user.userIdentifier }}, <a
-                                    href="{{ path('app_logout') }}">Logout</a>
-                        </div>
-                    {% endif %}
+                {% if app.user %}
+                    <div class="bg-indigo-100 rounded-lg py-5 px-6 mb-4 text-base text-indigo-700 mb-3"
+                         role="alert">
+                        You are logged in as {{ app.user.userIdentifier }}, <a
+                                href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
 
-                    <input
-                            type="email"
-                            value="{{ last_username }}"
-                            name="email"
-                            id="inputEmail"
-                            placeholder="Adresse Email"
-                            autocomplete="email"
-                            class="form-control"
-                            required autofocus
-                    />
-                    <input
-                            type="password"
-                            name="password"
-                            id="inputPassword"
-                            autocomplete="current-password"
-                            placeholder="Mot de passe"
-                            class="form-control my-4 p-2"
-                            required
-                    />
-                    <button class="form-button">Se connecter</button>
-                    <input type="hidden" name="_csrf_token"
-                           value="{{ csrf_token('authenticate') }}">
-                </form>
-            </div>
+                <input
+                        type="email"
+                        value="{{ last_username }}"
+                        name="email"
+                        id="inputEmail"
+                        placeholder="Adresse Email"
+                        autocomplete="email"
+                        class="form-control"
+                        required autofocus
+                />
+                <input
+                        type="password"
+                        name="password"
+                        id="inputPassword"
+                        autocomplete="current-password"
+                        placeholder="Mot de passe"
+                        class="form-control my-4 p-2"
+                        required
+                />
+                <button class="form-button">Se connecter</button>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}">
+            </form>
+            <p class="mt-3 text-gray-500">Problème de connexion ? <a class="text-black"
+                                                                     href="{{ path('app_contact') }}">Contactez
+                    un
+                    administrateur</a></p>
+
         </div>
+    </div>
+    <div class="justify-items-end text-gray-600">
+        <a href="">Politique de confidentialité</a> &bull;
+        <a href="">Conditions d'utilisation</a>
     </div>
 </div>
 </body>
