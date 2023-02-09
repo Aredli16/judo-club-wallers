@@ -9,6 +9,7 @@
         "@tailwindcss/line-clamp": "^0.4.2",
         "autoprefixer": "^10.4.13",
         "core-js": "^3.23.0",
+        "photoswipe": "^5.3.5",
         "postcss": "^8.4.21",
         "postcss-loader": "^7.0.2",
         "regenerator-runtime": "^0.13.9",

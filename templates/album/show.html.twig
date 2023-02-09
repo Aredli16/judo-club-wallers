@@ -19,10 +19,16 @@
 
     <section class="container flex">
         <div class="flex-1">
-            <div class="gallery grid grid-cols-2 gap-3">
+            <div class="gallery grid grid-cols-2 gap-3" id="gallery-album">
                 {% for photo in album.content %}
-                    <img src="{{ asset('uploads/media/albums/content/' ~ photo.filename) }}"
-                         alt="photo">
+                    <a href="{{ asset('uploads/media/albums/content/' ~ photo.filename) }}"
+                       data-pswp-width="1920"
+                       data-pswp-height="1080"
+                       data-cropped="true"
+                       target="_blank">
+                        <img src="{{ asset('uploads/media/albums/content/' ~ photo.filename) }}"
+                             alt="photo">
+                    </a>
                 {% endfor %}
             </div>
         </div>
