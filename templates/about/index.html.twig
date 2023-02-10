@@ -1,6 +1,33 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Le Club{% endblock %}
 
 {% block body %}
+    <div class="bg- border rounded-2xl">
+        <table class="mt-10 mb-10 m-auto">
+            <thead><tr class="bg-[#d43a33] text-white"><th colspan="5">Tarifs</th></tr></thead>
+            <tbody>
+            <tr>
+                <td class="border px-4 py-2">Cotisation Anuelle</td>
+                <td class="text-center border px-4 py-2">Baby Judo</td>
+                <td class="text-center border px-4 py-2">PPG</td>
+                <td class="text-center border px-4 py-2">Judo et Jujitsu</td>
+                <td class="text-center border px-4 py-2">Jujitsu</td>
+            </tr>
+            <tr>
+                <td class="border px-4 py-2">Nouveaux licencié</td>
+                <td class="text-center border px-4 py-2">70 €</td>
+                <td class="text-center border px-4 py-2">100 €</td>
+                <td class="text-center border px-4 py-2">150 €<br>95 € <br>Si enfants nés après 2015-2016</td>
+                <td class="text-center border px-4 py-2">100 €</td>
+            </tr>
+            <tr>
+                <td class="border px-4 py-2">Déjà licencié</td>
+                <td class="text-center border px-4 py-2" colspan="4" >40 € (Prix de la licence FFJDA)</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 {% endblock %}
