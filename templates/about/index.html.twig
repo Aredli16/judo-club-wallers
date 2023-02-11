@@ -2,10 +2,17 @@
 
 
 {% block title %}Le Club{% endblock %}
-
+{% block head %}
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com/%22%3E"></script>
+    <title>Connexion</title>
+{% endblock %}
 {% block body %}
-    <div class="bg- border rounded-2xl">
-        <table class="mt-10 mb-10 m-auto">
+
+    <div class="overflow-x-auto shadow-md rounded-lg m-auto w-1/2 mt-5">
+        <table class="w-full">
             <thead><tr class="bg-[#d43a33] text-white"><th colspan="5">Tarifs</th></tr></thead>
             <tbody>
             <tr>
@@ -29,5 +36,11 @@
             </tbody>
         </table>
     </div>
-
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Connexion</title>
+    </head>
 {% endblock %}
