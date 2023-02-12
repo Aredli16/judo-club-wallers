@@ -17,8 +17,8 @@
 
     <section class="container">
         {% for article in articles %}
-            <a href="{{ path('show.article', {slug: article.slug}) }}" class="flex border my-5 overflow-hidden">
-                <img class="h-72 w-72 object-cover max-h-full"
+            <a href="{{ path('show.article', {slug: article.slug}) }}" class="flex border my-5 max-md:flex-col">
+                <img class="w-1/4 max-md:w-full object-cover"
                      src="{{ asset('uploads/media/articles/content/' ~ article.imageFileName) }}"
                      alt="article-{{ article.title }}">
                 <div class="p-5">

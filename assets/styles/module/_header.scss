@@ -1,5 +1,5 @@
 .nav-links {
-  @apply flex;
+  @apply flex transition-transform max-md:flex-col max-md:absolute max-md:top-full max-md:left-0 max-md:bg-white max-md:h-screen max-md:py-4 max-md:pr-14 max-md:pl-7 max-md:border max-md:border-r-gray-300;
 }
 
 .nav-links ul {
@@ -7,7 +7,7 @@
 }
 
 .nav-links li {
-  @apply ml-4;
+  @apply ml-4 max-md:my-2;
 }
 
 .nav-links li a {
@@ -23,6 +23,14 @@
 
 .nav-links li a:hover::after {
   @apply scale-100;
+}
+
+.hamburger {
+  @apply hidden max-md:absolute max-md:w-[20px] max-md:h-[20px] max-md:cursor-pointer max-md:flex max-md:items-center max-md:bg-white;
+}
+
+.hamburger span {
+  @apply max-md:block max-md:w-full max-md:h-[2px] max-md:bg-[#333] max-md:absolute max-md:pointer-events-none;
 }
 
 .custom-shape-divider-bottom-1674683020 {
