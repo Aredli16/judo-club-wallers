@@ -3,16 +3,16 @@
 {% block title %}{{ album.title }}{% endblock %}
 
 {% block body %}
-    <section class="relative h-[350px] bg-blend-darken text-white"
+    <section class="relative h-[40vh] bg-blend-darken text-white overflow-hidden"
              style="background: rgba(0,0,0,0.9) url('{{ asset('images/header-2.jpg') }}') no-repeat center ; background-size: cover">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <h1>{{ album.title }}</h1>
+            <h1 class="whitespace-nowrap text-[5vw] text-center">{{ album.title }}</h1>
             <ul class="flex justify-center">
                 <li class="text-gray-300"><a class="after:content-['/'] after:mx-3" href="{{ path('app_home') }}">Accueil</a>
                 </li>
                 <li class="text-gray-300"><a class="after:content-['/'] after:mx-3" href="{{ path('app_album') }}">Photos</a>
                 </li>
-                <li>{{ album.title }}</li>
+                <li class="line-clamp-1">{{ album.title }}</li>
             </ul>
         </div>
     </section>
@@ -32,7 +32,7 @@
                 {% endfor %}
             </div>
         </div>
-        <aside class="w-60 ml-5">
+        <aside class="w-60 ml-5 max-md:hidden">
             <h3 class="mb-3">Dernières actualités</h3>
             {% for last_article in latest_articles %}
                 <a class="flex mb-5" href="{{ path('show.article', {slug: last_article.slug}) }}">

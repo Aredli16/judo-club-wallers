@@ -16,7 +16,7 @@
     </section>
 
     <section class="container">
-        <div class="gallery grid grid-cols-4 grid-rows-3 gap-3">
+        <div class="gallery grid grid-cols-4 gap-3 max-md:grid-cols-2">
             {% for album in albums %}
                 <a class="album-item" href="{{ path('app_show.album', {slug: album.slug}) }}">
                     <img src="{{ asset('uploads/media/albums/content/' ~ album.content.get(0).filename) }}"
