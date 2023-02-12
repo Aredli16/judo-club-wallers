@@ -53,9 +53,16 @@
     </div>
     <nav class="sticky top-0 px-10 py-3 shadow bg-white z-50">
         <div class="flex items-center justify-between">
-            <img class="h-10" src="{{ asset('images/logo.png') }}" alt="logo">
+            <button type="button" aria-label="Toggle navigation" aria-expanded="false"
+                    class="hamburger">
+                <span class="transition-transform max-md:translate-y-[7px]"></span>
+                <span class="max-md:transition-opacity"></span>
+                <span class="transition-transform max-md:-translate-y-[7px]"></span>
+            </button>
 
-            <ul class="nav-links">
+            <img class="h-10 max-md:mx-auto" src="{{ asset('images/logo.png') }}" alt="logo">
+
+            <ul class="nav-links max-md:-translate-x-full">
                 <li><a href="{{ path('app_home') }}">Accueil</a></li>
                 <li><a href="{{ path('app_about') }}">Le Club</a></li>
                 <li><a href="{{ path('app_article') }}">Actualité</a></li>
