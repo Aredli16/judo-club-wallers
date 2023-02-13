@@ -2,45 +2,162 @@
 
 
 {% block title %}Le Club{% endblock %}
-{% block head %}
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <script src="https://cdn.tailwindcss.com/%22%3E"></script>
-    <title>Connexion</title>
-{% endblock %}
-{% block body %}
 
-    <div class="overflow-x-auto shadow-md rounded-lg m-auto w-1/2 mt-5">
-        <table class="w-full">
-            <thead><tr class="bg-[#d43a33] text-white"><th colspan="5">Tarifs</th></tr></thead>
-            <tbody>
-            <tr>
-                <td class="border px-4 py-2">Cotisation Anuelle</td>
-                <td class="text-center border px-4 py-2">Baby Judo</td>
-                <td class="text-center border px-4 py-2">PPG</td>
-                <td class="text-center border px-4 py-2">Judo et Jujitsu</td>
-                <td class="text-center border px-4 py-2">Jujitsu</td>
-            </tr>
-            <tr>
-                <td class="border px-4 py-2">Nouveaux licencié</td>
-                <td class="text-center border px-4 py-2">70 €</td>
-                <td class="text-center border px-4 py-2">100 €</td>
-                <td class="text-center border px-4 py-2">150 €<br>95 € <br>Si enfants nés après 2015-2016</td>
-                <td class="text-center border px-4 py-2">100 €</td>
-            </tr>
-            <tr>
-                <td class="border px-4 py-2">Déjà licencié</td>
-                <td class="text-center border px-4 py-2" colspan="4" >40 € (Prix de la licence FFJDA)</td>
-            </tr>
-            </tbody>
-        </table>
+{% block body %}
+    <section class="container">
+        <div class="m-10 p-10">
+            <h2 class="text-4xl">Horraires</h2>
+            <div class="text-center">
+                <input type="radio" id="contactChoice1"
+                       name="contact" value="all">
+                <label class="ml-2 mr-5" for="contactChoice1">Tous les horraires</label>
+
+                <input type="radio" id="contactChoice2"
+                       name="contact" value="mercredi">
+                <label class="ml-2 mr-5" for="contactChoice2">Mercredi</label>
+
+                <input type="radio" id="contactChoice3"
+                       name="contact" value="vendredi">
+                <label class="ml-2 mr-5" for="contactChoice3">Vendredi</label>
+
+                <input type="radio" id="contactChoice4"
+                       name="contact" value="samedi">
+                <label class="ml-2 mr-5" for="contactChoice4">Samedi</label>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="m-10 p-10">
+            <div class="overflow-x-auto shadow-md rounded-lg m-auto w-1/2 mt-5">
+                <table class="w-full">
+                    <thead><tr class="bg-[#d43a33] text-white"><th colspan="5">Tarifs</th></tr></thead>
+                    <tbody>
+                    <tr>
+                        <td class="border px-4 py-2">Cotisation Anuelle</td>
+                        <td class="text-center border px-4 py-2">Baby Judo</td>
+                        <td class="text-center border px-4 py-2">PPG</td>
+                        <td class="text-center border px-4 py-2">Judo et Jujitsu</td>
+                        <td class="text-center border px-4 py-2">Jujitsu</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Nouveaux licencié</td>
+                        <td class="text-center border px-4 py-2">70 €</td>
+                        <td class="text-center border px-4 py-2">100 €</td>
+                        <td class="text-center border px-4 py-2">150 €<br>95 € <br>Si enfants nés après 2015-2016</td>
+                        <td class="text-center border px-4 py-2">100 €</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Déjà licencié</td>
+                        <td class="text-center border px-4 py-2" colspan="4" >40 € (Prix de la licence FFJDA)</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="m-10 p-10">
+            <h2 class="text-4xl">Les membres du bureau</h2>
+            <div class="grid grid-cols-4 gap-5 text-center m-10">
+                {% for teacher in teachers %}
+                    <div>
+                        {% if teacher.avatar is not null %}
+                            <img class=" max-h-full" src="{{ asset('uploads/media/users/content/' ~teacher.avatar) }}"
+                                 alt="teacher-{{ teacher.firstname }}">
+                        {% else %}
+                            <img class="max-h-full" src="{{ asset('images/default-avatar.png') }}"
+                                 alt="teacher-{{ teacher.firstname }}">
+                        {% endif %}
+                        <h5>{{ teacher.lastname }} {{ teacher.firstname }}</h5>
+                        <p class="text-gray-500">{{ teacher.about }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <div class="swiper mySwiper mt-10">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="swiper-slide">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="swiper-slide">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                        <td>
+                            <img src="https://source.unsplash.com/collection/190728/500x500"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <title>Connexion</title>
-    </head>
+
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.mySwiper', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 {% endblock %}
