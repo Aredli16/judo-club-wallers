@@ -12,4 +12,5 @@ import './styles/app.scss'
 import './bootstrap'
 
 import './js/photoswipe'
+import './js/swipe'
 import './js/header/navbar'
