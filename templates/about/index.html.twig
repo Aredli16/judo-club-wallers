@@ -5,84 +5,115 @@
 
 {% block body %}
     <section class="container">
-        <div class="m-10 p-10">
-            <h2 class="text-4xl">Horaires</h2>
-            <div class="text-center">
-                <input type="radio" id="contactChoice1"
-                       name="contact" value="all">
-                <label class="ml-2 mr-5" for="contactChoice1">Tous les horaires</label>
-
-                <input type="radio" id="contactChoice2"
-                       name="contact" value="mercredi">
-                <label class="ml-2 mr-5" for="contactChoice2">Mercredi</label>
-
-                <input type="radio" id="contactChoice3"
-                       name="contact" value="vendredi">
-                <label class="ml-2 mr-5" for="contactChoice3">Vendredi</label>
-
-                <input type="radio" id="contactChoice4"
-                       name="contact" value="samedi">
-                <label class="ml-2 mr-5" for="contactChoice4">Samedi</label>
-            </div>
+        <h2 class="text-4xl">Horaires</h2>
+        <div class="overflow-x-auto shadow-md rounded-lg">
+            <table class="w-full">
+                <thead>
+                <tr class="bg-[#d43a33] text-white text-center">
+                    <td colspan="2">Horaires du Mercredi</td>
+                    <td colspan="2">Horaires du Vendredi</td>
+                    <td colspan="2">Horaires du Samedi</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center border px-4 py-2">14h00<br>-<br>15h00</td>
+                    <td class="text-center border px-4 py-2">Baby Judo<br>Né(es) en 2017 et 2018</td>
+                    <td class="text-center border px-4 py-2">17h30<br>-<br>19h30</td>
+                    <td class="text-center border px-4 py-2">Préparation Physique<br>Générale (Adultes)</td>
+                    <td class="text-center border px-4 py-2">14h00<br>-<br>15h00</td>
+                    <td class="text-center border px-4 py-2">Judo 1er Groupe<br>Né(es) en 2015 et 2016</td>
+                </tr>
+                <tr>
+                    <td class="text-center border px-4 py-2">15h00<br>-<br>16h00</td>
+                    <td class="text-center border px-4 py-2">Judo 1er Groupe<br>Né(es) en 2015 et 2016</td>
+                    <td class="text-center border px-4 py-2">19h30<br>-<br>20h30</td>
+                    <td class="text-center border px-4 py-2">Judo / Ju-Jitsu<br>3ème Groupe</td>
+                    <td class="text-center border px-4 py-2">15h00<br>-<br>16h00</td>
+                    <td class="text-center border px-4 py-2">Ju-Jitsu enfants<br>Né(es) en 2011 et 2014</td>
+                </tr>
+                <tr>
+                    <td class="text-center border px-4 py-2">16h00<br>-<br>17h15</td>
+                    <td class="text-center border px-4 py-2">Judo 2ème Groupe<br>Né(es) en 2011 et 2014</td>
+                    <td class="text-center border px-4 py-2">20h30<br>-<br>21h30</td>
+                    <td class="text-center border px-4 py-2">PPG Compétiteurs<br>3ème Groupe</td>
+                    <td class="text-center border px-4 py-2">16h00<br>-<br>17h00</td>
+                    <td class="text-center border px-4 py-2">Judo 2ème Groupe<br>Né(es) en 2011 et 2014</td>
+                </tr>
+                <tr>
+                    <td class="text-center border px-4 py-2">17h15<br>-<br>18h30</td>
+                    <td class="text-center border px-4 py-2">Judo -18 ans<br>Né(es) en 2005 et après</td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-center border px-4 py-2">17h00<br>-<br>18h30</td>
+                    <td class="text-center border px-4 py-2">Judo 3ème Groupe<br>Né(es) en 2010 et avant</td>
+                </tr>
+                <tr>
+                    <td class="text-center border px-4 py-2">18h30<br>-<br>20h00</td>
+                    <td class="text-center border px-4 py-2">Judo 3ème Groupe<br>Né(es) en 2009 et avant</td>
+                </tr>
+                <tr>
+                    <td class="text-center border px-4 py-2">20h00<br>-<br>21h30</td>
+                    <td class="text-center border px-4 py-2">Ju-Jitsu / Self défense<br>Tous Niveaux dès 12 ans</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
     <section class="container">
-        <div class="m-10 p-10">
-            <div class="overflow-x-auto shadow-md rounded-lg m-auto w-1/2 mt-5">
-                <table class="w-full">
-                    <thead>
-                    <tr class="bg-[#d43a33] text-white">
-                        <th colspan="5">Tarifs</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="border px-4 py-2">Cotisation Annuelle</td>
-                        <td class="text-center border px-4 py-2">Baby Judo</td>
-                        <td class="text-center border px-4 py-2">PPG</td>
-                        <td class="text-center border px-4 py-2">Judo et Jujitsu</td>
-                        <td class="text-center border px-4 py-2">Jujitsu</td>
-                    </tr>
-                    <tr>
-                        <td class="border px-4 py-2">Nouveaux licencié</td>
-                        <td class="text-center border px-4 py-2">70 €</td>
-                        <td class="text-center border px-4 py-2">100 €</td>
-                        <td class="text-center border px-4 py-2">150 €<br>95 € <br>Si enfants nés après 2015-2016</td>
-                        <td class="text-center border px-4 py-2">100 €</td>
-                    </tr>
-                    <tr>
-                        <td class="border px-4 py-2">Déjà licencié</td>
-                        <td class="text-center border px-4 py-2" colspan="4">40 € (Prix de la licence FFJDA)</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+        <h2 class="text-4xl">Tarifs</h2>
+        <div class="overflow-x-auto shadow-md rounded-lg">
+            <table class="w-full">
+                <thead>
+                <tr class="bg-[#d43a33] text-white">
+                    <th colspan="5">Tarifs</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="border px-4 py-2">Cotisation Anuelle</td>
+                    <td class="text-center border px-4 py-2">Baby Judo</td>
+                    <td class="text-center border px-4 py-2">PPG</td>
+                    <td class="text-center border px-4 py-2">Judo et Jujitsu</td>
+                    <td class="text-center border px-4 py-2">Jujitsu</td>
+                </tr>
+                <tr>
+                    <td class="border px-4 py-2">Nouveaux licencié</td>
+                    <td class="text-center border px-4 py-2">70 €</td>
+                    <td class="text-center border px-4 py-2">100 €</td>
+                    <td class="text-center border px-4 py-2">150 €<br>95 € <br>Si enfants nés après 2015-2016</td>
+                    <td class="text-center border px-4 py-2">100 €</td>
+                </tr>
+                <tr>
+                    <td class="border px-4 py-2">Déjà licencié</td>
+                    <td class="text-center border px-4 py-2" colspan="4">40 € (Prix de la licence FFJDA)</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
     <section class="container">
-        <div class="m-10 p-10">
-            <h2 class="text-4xl">Les membres du bureau</h2>
-            <div class="grid grid-cols-4 gap-5 text-center m-10">
-                {% for teacher in teachers %}
-                    <div>
-                        {% if teacher.avatar is not null %}
-                            <img class=" max-h-full" src="{{ asset('uploads/media/users/content/' ~teacher.avatar) }}"
-                                 alt="teacher-{{ teacher.firstname }}">
-                        {% else %}
-                            <img class="max-h-full" src="{{ asset('images/default-avatar.png') }}"
-                                 alt="teacher-{{ teacher.firstname }}">
-                        {% endif %}
-                        <h5>{{ teacher.lastname }} {{ teacher.firstname }}</h5>
-                        <p class="text-gray-500">{{ teacher.about }}</p>
-                    </div>
-                {% endfor %}
-            </div>
+        <h2 class="text-4xl">Les membres du bureau</h2>
+        <div class="grid grid-cols-4 gap-5 text-center">
+            {% for teacher in teachers %}
+                <div class="">
+                    {% if teacher.avatar is not null %}
+                        <img class=" max-h-full" src="{{ asset('uploads/media/users/content/' ~teacher.avatar) }}"
+                             alt="teacher-{{ teacher.firstname }}">
+                    {% else %}
+                        <img class="max-h-full" src="{{ asset('images/default-avatar.png') }}"
+                             alt="teacher-{{ teacher.firstname }}">
+                    {% endif %}
+                    <h5>{{ teacher.lastname }} {{ teacher.firstname }}</h5>
+                    <p class="text-gray-500">{{ teacher.about }}</p>
+                </div>
+            {% endfor %}
         </div>
     </section>
 
-    <section class="sponsor">
+    <section class="container sponsor">
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
