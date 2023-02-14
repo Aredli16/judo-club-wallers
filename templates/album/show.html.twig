@@ -32,7 +32,7 @@
                 {% endfor %}
             </div>
         </div>
-        <aside class="w-60 ml-5 max-md:hidden">
+        <aside class="w-60 ml-5 max-xl:hidden">
             <h3 class="mb-3">Dernières actualités</h3>
             {% for last_article in latest_articles %}
                 <a class="flex mb-5" href="{{ path('show.article', {slug: last_article.slug}) }}">

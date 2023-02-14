@@ -4,6 +4,18 @@
 {% block title %}Le Club{% endblock %}
 
 {% block body %}
+    <section class="relative h-[350px] bg-blend-darken text-white"
+             style="background: rgba(0,0,0,0.9) url('{{ asset('images/header-2.jpg') }}') no-repeat center; background-size: cover">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <h1>Le Club</h1>
+            <ul class="flex justify-center">
+                <li class="text-gray-300"><a class="after:content-['/'] after:mx-3" href="{{ path('app_home') }}">Accueil</a>
+                </li>
+                <li>Le Club</li>
+            </ul>
+        </div>
+    </section>
+
     <section class="container">
         <h2 class="text-4xl">Horaires</h2>
         <div class="overflow-x-auto shadow-md rounded-lg">
@@ -96,18 +108,20 @@
 
     <section class="container">
         <h2 class="text-4xl">Les membres du bureau</h2>
-        <div class="grid grid-cols-4 gap-5 text-center">
+        <div class="grid grid-cols-4 max-lg:grid-cols-2 gap-5 text-center">
             {% for teacher in teachers %}
-                <div class="">
+                <div>
                     {% if teacher.avatar is not null %}
-                        <img class=" max-h-full" src="{{ asset('uploads/media/users/content/' ~teacher.avatar) }}"
+                        <img class="rounded-full object-cover h-52 w-52 mx-auto"
+                             src="{{ asset('uploads/media/users/content/' ~teacher.avatar) }}"
                              alt="teacher-{{ teacher.firstname }}">
                     {% else %}
-                        <img class="max-h-full" src="{{ asset('images/default-avatar.png') }}"
+                        <img class="rounded-full object-cover h-52 w-52 mx-auto"
+                             src="{{ asset('images/default-avatar.png') }}"
                              alt="teacher-{{ teacher.firstname }}">
                     {% endif %}
                     <h5>{{ teacher.lastname }} {{ teacher.firstname }}</h5>
-                    <p class="text-gray-500">{{ teacher.about }}</p>
+                    <p class="text-gray-500">{{ teacher.roles[0] }}</p>
                 </div>
             {% endfor %}
         </div>
@@ -117,59 +131,59 @@
         <div class="slider">
             <div class="slide-track">
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
                          alt=""/>
                 </div>
                 <div class="slide">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250"
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
                          alt=""/>
                 </div>
             </div>
