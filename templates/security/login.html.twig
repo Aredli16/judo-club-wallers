@@ -58,7 +58,7 @@
                         class="form-control my-4 p-2"
                         required
                 />
-                <button class="form-button hover:bg-red-400">Se connecter</button>
+                <button class="form-button hover:bg-red-400" id="submit">Se connecter</button>
                 <input type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}">
             </form>
