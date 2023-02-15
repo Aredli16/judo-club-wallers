@@ -33,7 +33,7 @@ class EasyAdminSubscriber implements EventSubscriberInterface
             try {
                 $this->httpClient->request(
                     'POST',
-                    'https://graph.facebook.com/112297715116412/feed?message=' . $entity->getContent() . '&access_token=' . $this->parameter->get('facebook_access_token')
+                    'https://graph.facebook.com/112297715116412/feed?message=' . strip_tags($entity->getContent()) . '&access_token=' . $this->parameter->get('facebook_access_token')
                 );
             } catch (TransportExceptionInterface $e) {
                 dd($e);

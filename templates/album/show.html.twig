@@ -46,7 +46,7 @@
                             facere harum, id ipsa magni nulla optio saepe sunt, veritatis.</h6>
                         <p class="text-gray-500 line-clamp-1">{{ last_article.createdAtToString }}
                             par {{ last_article.author }}</p>
-                        <p class="text-gray-500 line-clamp-2">{{ last_article.content|raw }}</p>
+                        <p class="text-gray-500 line-clamp-2">{{ last_article.content|striptags }}</p>
                     </div>
                 </a>
             {% endfor %}
