@@ -7,7 +7,7 @@ use Symfony\Component\Panther\PantherTestCase;
 
 class LoginPantherTest extends PantherTestCase
 {
-    public function testLoginWithAdminCredentials(): void
+    public function testLoginWithValidAdminCredentials(): void
     {
 
         $client = static::createPantherClient(array_replace(static::$defaultOptions, ['port' => 9081]));
