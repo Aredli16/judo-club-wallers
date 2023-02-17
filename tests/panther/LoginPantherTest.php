@@ -22,4 +22,18 @@ class LoginPantherTest extends PantherTestCase
         $route = explode('/', $url);
         $this->assertEquals("admin", end($route));
     }
+
+    public function testLoginWithUnvalidCredentials(): void
+    {
+
+        $client = static::createPantherClient(array_replace(static::$defaultOptions, ['port' => 9081]));
+        $crawler = $client->request('GET', '/login');
+        $client->waitFor("#submit");
+        $button = $client->getWebDriver()->findElement(WebDriverBy::id("submit"));
+        $client->getWebDriver()->findElement(WebDriverBy::id("inputEmail"))->sendKeys("admin@admin.com");
+        $client->getWebDriver()->findElement(WebDriverBy::id("inputPassword"))->sendKeys("NonValidPassword");
+        $button->click();
+        $client->waitFor('html');
+        $this->assertSelectorTextContains('div', 'Invalid credentials.');
+    }
 }
