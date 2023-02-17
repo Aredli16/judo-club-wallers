@@ -59,6 +59,16 @@
                     tincidunt sed dui id, dignissim hendrerit enim. Nulla tempus fringilla lorem ut consectetur.
                     Curabitur accumsan enim nisi, id volutpat metus accumsan quis. Praesent sit amet nisl efficitur,
                     sagittis risus vitae, maximus magna.!</p>
+
+                <div id="fb-root"></div>
+                <script async defer crossorigin="anonymous"
+                        src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v16.0&appId=525305872818480&autoLogAppEvents=1"
+                        nonce="umrT0eoj"></script>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FlempereurRita%2F%3Flocale%3Dfr_FR&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=525305872818480"
+                        width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        class="mx-auto"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 <div class="sponsor">
                     <div class="slider">
                         <div class="slide-track">
@@ -85,7 +95,6 @@
             <img class="max-lg:hidden w-2/5 min-h-full object-cover ml-5" src="{{ asset('images/about.jpg') }}"
                  alt="about">
         </div>
-
     </section>
 
     {# TEACHER SECTION #}
@@ -159,7 +168,7 @@
                         <p class="text-gray-500 line-clamp-1">{{ article.createdAtToString }}
                             par {{ article.author }}</p>
                         <h4 class="line-clamp-1 my-2">{{ article.title }}</h4>
-                        <p class="line-clamp-4">{{ article.content|raw }}</p>
+                        <p class="line-clamp-4">{{ article.content|striptags }}</p>
                     </div>
                 </a>
             {% endfor %}
