@@ -18,16 +18,20 @@ class PantherAdminTest extends PantherTestCase
 
         $this->repository = $kernel->getContainer()->get('doctrine')->getManager()->getRepository(Article::class);
     }
-    public function testLoginWithValidAdminCredentials(): void
-    {
-        $client = static::createPantherClient(array_replace(static::$defaultOptions, ['port' => 9081]));
+
+    public function loginToAdminPanel($client, $mail, $psw): void{
         $crawler = $client->request('GET', '/login');
         $client->waitFor("#submit");
         $button = $client->getWebDriver()->findElement(WebDriverBy::id("submit"));
-        $client->getWebDriver()->findElement(WebDriverBy::id("inputEmail"))->sendKeys("admin@admin.com");
-        $client->getWebDriver()->findElement(WebDriverBy::id("inputPassword"))->sendKeys("admin");
+        $client->getWebDriver()->findElement(WebDriverBy::id("inputEmail"))->sendKeys($mail);
+        $client->getWebDriver()->findElement(WebDriverBy::id("inputPassword"))->sendKeys($psw);
         $button->click();
         $client->waitFor('html');
+    }
+    public function testLoginWithValidAdminCredentials(): void
+    {        
+        $client = static::createPantherClient(array_replace(static::$defaultOptions, ['port' => 9081]));
+        $this->loginToAdminPanel($client, "admin@admin.com", "admin");
         $url = $client->getCurrentURL();
         $route = explode('/', $url);
         $this->assertEquals("admin", end($route));
@@ -37,13 +41,7 @@ class PantherAdminTest extends PantherTestCase
     {
 
         $client = static::createPantherClient(array_replace(static::$defaultOptions, ['port' => 9081]));
-        $crawler = $client->request('GET', '/login');
-        $client->waitFor("#submit");
-        $button = $client->getWebDriver()->findElement(WebDriverBy::id("submit"));
-        $client->getWebDriver()->findElement(WebDriverBy::id("inputEmail"))->sendKeys("admin@admin.com");
-        $client->getWebDriver()->findElement(WebDriverBy::id("inputPassword"))->sendKeys("NonValidPassword");
-        $button->click();
-        $client->waitFor('html');
+        $this->loginToAdminPanel($client, "admin@admin.com", "fakePsw");
         $this->assertSelectorTextContains('div', 'Invalid credentials.');
     }
 
@@ -51,13 +49,7 @@ class PantherAdminTest extends PantherTestCase
     {
         $nbArticles = count($this->repository->findAll());
         $client = static::createPantherClient(array_replace(static::$defaultOptions, ['port' => 9081]));
-        $crawler = $client->request('GET', '/login');
-        $client->waitFor("#submit");
-        $button = $client->getWebDriver()->findElement(WebDriverBy::id("submit"));
-        $client->getWebDriver()->findElement(WebDriverBy::id("inputEmail"))->sendKeys("admin@admin.com");
-        $client->getWebDriver()->findElement(WebDriverBy::id("inputPassword"))->sendKeys("admin");
-        $button->click();
-        $client->waitFor('html');
+        $this->loginToAdminPanel($client, "admin@admin.com", "admin");
         $client->getWebDriver()->findElement(WebDriverBy::id('navigation-toggler'))->click();
         $client->waitForVisibility('#main-menu > ul > li:nth-child(2) > a');
         $client->getWebDriver()->findElement(WebDriverBy::cssSelector('#main-menu > ul > li:nth-child(2) > a'))->click();
