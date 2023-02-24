@@ -32,31 +32,87 @@
     <section class="container">
         <h2>Le Club</h2>
         <div class="flex">
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id iure iusto laborum
-                minus, natus
-                nostrum officia similique unde vitae. Aut autem maxime natus non vero? Dignissimos, eum ipsa? Aliquid,
-                quod!</p>
-            <img class="max-md:hidden w-1/2 min-h-full object-cover ml-5" src="{{ asset('images/about.jpg') }}"
+            <div class="flex flex-col w-3/5 max-lg:w-full justify-between">
+                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor magna non ligula
+                    iaculis efficitur. Suspendisse potenti. Nullam tincidunt leo in lorem iaculis, ut molestie mi
+                    finibus. Duis metus nisi, malesuada nec elementum non, venenatis eget dui. Phasellus rutrum diam sed
+                    justo tempor pharetra. Etiam in arcu in erat lobortis lacinia. Etiam vulputate bibendum ipsum ac
+                    congue. Curabitur molestie, odio sit amet venenatis fringilla, arcu erat cursus ante, quis cursus
+                    nisl mauris in nibh. In facilisis, massa non viverra euismod, augue neque varius nulla, at egestas
+                    risus eros eget orci. Etiam molestie eget lectus eget cursus. Suspendisse id iaculis nisi. Nulla
+                    vehicula a orci sed faucibus. Maecenas convallis dignissim urna, eu dictum enim rhoncus id. Maecenas
+                    commodo magna id lobortis gravida.
+
+
+                    Vivamus consequat eros odio, sed congue arcu elementum quis. Aenean in ante malesuada lorem
+                    ullamcorper hendrerit id imperdiet ipsum. Pellentesque vulputate orci sed lectus hendrerit aliquam.
+                    Aliquam aliquam pulvinar fermentum. Nullam porttitor mi tellus, nec viverra lorem tincidunt ut.
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                    Maecenas finibus, nulla malesuada rhoncus scelerisque, risus nibh iaculis erat, gravida cursus neque
+                    sem eget eros. Donec hendrerit dui ultricies metus sollicitudin congue.
+
+                    Nulla sed molestie mauris. Proin lobortis malesuada ligula eu aliquam. Curabitur tristique fringilla
+                    velit consectetur dapibus. Nunc vel tortor eget eros mattis dignissim ac quis nulla. Pellentesque et
+                    justo condimentum, egestas neque vitae, tristique nibh. Ut nec accumsan metus, condimentum porta
+                    nulla. Pellentesque tincidunt, tellus in elementum vehicula, mi purus molestie metus, at vulputate
+                    dui sapien non velit. Donec nec tellus sed nulla egestas blandit non id urna. Aliquam velit arcu,
+                    tincidunt sed dui id, dignissim hendrerit enim. Nulla tempus fringilla lorem ut consectetur.
+                    Curabitur accumsan enim nisi, id volutpat metus accumsan quis. Praesent sit amet nisl efficitur,
+                    sagittis risus vitae, maximus magna.!</p>
+
+                <div id="fb-root"></div>
+                <script async defer crossorigin="anonymous"
+                        src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v16.0&appId=525305872818480&autoLogAppEvents=1"
+                        nonce="umrT0eoj"></script>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FlempereurRita%2F%3Flocale%3Dfr_FR&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=525305872818480"
+                        width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        class="mx-auto"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <div class="sponsor">
+                    <div class="slider">
+                        <div class="slide-track">
+                            {% for sponsor in sponsors %}
+                                <div class="slide">
+                                    <a target="_blank" href="{{ sponsor.link }}">
+                                        <img src="{{ asset('uploads/media/sponsors/content/' ~ sponsor.image) }}"
+                                             alt="{{ sponsor.name }}"/>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                            {% for sponsor in sponsors %}
+                                <div class="slide">
+                                    <a target="_blank" href="{{ sponsor.link }}">
+                                        <img src="{{ asset('uploads/media/sponsors/content/' ~ sponsor.image) }}"
+                                             alt="{{ sponsor.name }}"/>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="max-lg:hidden w-2/5 min-h-full object-cover ml-5" src="{{ asset('images/about.jpg') }}"
                  alt="about">
         </div>
-
     </section>
 
     {# TEACHER SECTION #}
-    <section class="container ">
+    <section class="container">
         <h2>Les enseignants</h2>
-        <div class="grid grid-cols-4 max-md:grid-cols-2 gap-5 text-center">
+        <div class="grid grid-cols-4 max-xl:grid-cols-2 gap-5 text-center">
             {% for teacher in teachers %}
                 <div>
                     {% if teacher.avatar is not null %}
-                        <img src="{{ asset('uploads/media/users/content/' ~teacher.avatar) }}"
+                        <img class="object-cover h-60 w-60 mx-auto"
+                             src="{{ asset('uploads/media/users/content/' ~teacher.avatar) }}"
                              alt="teacher-{{ teacher.firstname }}">
                     {% else %}
                         <img src="{{ asset('images/default-avatar.png') }}"
                              alt="teacher-{{ teacher.firstname }}">
                     {% endif %}
-                    <h5 class="max-md:hidden">{{ teacher.lastname }} {{ teacher.firstname }}</h5>
-                    <p class="max-md:hidden text-gray-500">{{ teacher.about }}</p>
+                    <h5 class="max-lg:hidden">{{ teacher.lastname }} {{ teacher.firstname }}</h5>
+                    <p class="max-lg:hidden text-gray-500">{{ teacher.about }}</p>
                 </div>
             {% endfor %}
         </div>
@@ -112,7 +168,7 @@
                         <p class="text-gray-500 line-clamp-1">{{ article.createdAtToString }}
                             par {{ article.author }}</p>
                         <h4 class="line-clamp-1 my-2">{{ article.title }}</h4>
-                        <p class="line-clamp-4">{{ article.content|raw }}</p>
+                        <p class="line-clamp-4">{{ article.content|striptags }}</p>
                     </div>
                 </a>
             {% endfor %}

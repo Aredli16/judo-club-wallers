@@ -130,7 +130,22 @@
     <section class="container sponsor">
         <div class="slider">
             <div class="slide-track">
-               
+                {% for sponsor in sponsors %}
+                    <div class="slide">
+                        <a target="_blank" href="{{ sponsor.link }}">
+                            <img src="{{ asset('uploads/media/sponsors/content/' ~ sponsor.image) }}"
+                                 alt="{{ sponsor.name }}"/>
+                        </a>
+                    </div>
+                {% endfor %}
+                {% for sponsor in sponsors %}
+                    <div class="slide">
+                        <a target="_blank" href="{{ sponsor.link }}">
+                            <img src="{{ asset('uploads/media/sponsors/content/' ~ sponsor.image) }}"
+                                 alt="{{ sponsor.name }}"/>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

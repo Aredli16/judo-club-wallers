@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container flex">
-        <section class="flex-1 border max-md:border-none">
+        <section class="flex-1 border max-xl:border-none">
             <img class="w-full h-96 object-cover"
                  src="{{ asset('uploads/media/articles/content/' ~article.imageFileName) }}"
                  alt="article-{{ article.title }}">
@@ -15,7 +15,7 @@
                 <p>{{ article.content|raw }}</p>
             </div>
         </section>
-        <aside class="w-60 ml-5 max-md:hidden">
+        <aside class="w-60 ml-5 max-xl:hidden">
             <h3 class="mb-3">Dernières actualités</h3>
             {% for last_article in latest_articles %}
                 <a class="flex mb-5" href="{{ path('show.article', {slug: last_article.slug}) }}">
@@ -29,7 +29,7 @@
                             facere harum, id ipsa magni nulla optio saepe sunt, veritatis.</h6>
                         <p class="text-gray-500 line-clamp-1">{{ last_article.createdAtToString }}
                             par {{ last_article.author }}</p>
-                        <p class="text-gray-500 line-clamp-2">{{ last_article.content|raw }}</p>
+                        <p class="text-gray-500 line-clamp-2">{{ last_article.content|striptags }}</p>
                     </div>
                 </a>
             {% endfor %}
