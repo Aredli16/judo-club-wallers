@@ -21,6 +21,7 @@ class AlbumFixtures extends Fixture
         for ($i = 0; $i <= self::GENERATE_ALBUM; $i++) {
             $album = new Album();
             $album->setTitle($faker->sentence(2));
+            $album->setMetadesc($faker->realText());
             $this->setReference($i . '-album', $album);
             $manager->persist($album);
         }

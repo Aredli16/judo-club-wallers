@@ -33,7 +33,7 @@ class ArticleFixtures extends Fixture
             $article->setTitle($faker->sentence(2));
             $article->setContent($faker->realText());
             $article->setAuthor($faker->firstName());
-
+            $article->setMetadesc($faker->realText());
             $article->setImageFileName(md5(uniqid()) . '.jpg');
             $response = $this->client->request('GET', 'https://picsum.photos/1920/1080');
             $fileHandler = fopen('public/uploads/media/articles/content/' . $article->getImageFileName(), 'w');

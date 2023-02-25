@@ -23,6 +23,8 @@ class AlbumCrudController extends AbstractCrudController
         yield TextField::new('title');
         yield DateTimeField::new('created_at')
             ->onlyOnIndex();
+        yield TextField::new('metadesc')
+            ->onlyOnForms();
         yield ContentField::new('content');
     }
 
