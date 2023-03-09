@@ -2,7 +2,15 @@
 
 {% block title %}Photos{% endblock %}
 {% block meta_description %}Vous y trouverez tous les albums photos du club de judo.{% endblock %}
-
+{% block meta %}
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="album">
+    <meta property="og:title" content="Photos">
+    <meta property="og:description" content="Vous y trouverez tous les albums photos du club de judo.">
+    <meta property="og:site_name" content="Judo Club Wallers">
+    <meta property="og:url"
+          content="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}">
+{% endblock %}
 {% block body %}
     <section class="relative h-[350px] bg-blend-darken text-white"
              style="background: rgba(0,0,0,0.9) url('{{ asset('images/header-2.jpg') }}') no-repeat center; background-size: cover">

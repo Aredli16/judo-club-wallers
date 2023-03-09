@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
           content="{% block meta_description %}La Page d'acceuil ou vous pouvez retrouver l'histoire du club, les enseignants, son actualité ainsi que les derniers albums photos{% endblock %}">
+    <meta name="robots" content="all">
+    {% block meta %}
+    {% endblock %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
