@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Vtiful\Kernel\Format;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -26,6 +25,9 @@ class Article
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageFileName = null;
+
+    #[ORM\Column(length: 200)]
+    private ?string $metadesc = '';
 
     #[ORM\Column (options: ["default" => "CURRENT_TIMESTAMP"])]
     private ?\DateTimeImmutable $created_at;
@@ -98,14 +100,21 @@ class Article
         return $this;
     }
 
+
+    public function getMetadesc(): ?string
+    {
+        return $this->metadesc;
+    }
+
+
+    public function setMetadesc(?string $metadesc): void
+    {
+        $this->metadesc = $metadesc;
+    }
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
-    }
-
-    public function getCreatedAtToString(): ?string
-    {
-        return $this->created_at->format('d/m/Y');
     }
 
     public function setCreatedAt(\DateTimeImmutable $created_at): self
@@ -113,6 +122,11 @@ class Article
         $this->created_at = $created_at;
 
         return $this;
+    }
+
+    public function getCreatedAtToString(): ?string
+    {
+        return $this->created_at->format('d/m/Y');
     }
 
     public function getSlug(): ?string

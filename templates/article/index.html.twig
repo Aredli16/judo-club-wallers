@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Actualité{% endblock %}
-
+{% block meta_description %}Retrouvez ici toutes les dernières nouvelles du club de judo wallers.{% endblock %}
+{% block meta %}
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Actualité">
+    <meta property="og:description" content="Retrouvez ici toutes les dernières nouvelles du club de judo wallers.">
+    <meta property="og:site_name" content="Judo Club Wallers">
+    <meta property="og:url"
+          content="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}">
+{% endblock %}
 {% block body %}
     <section class="relative h-[350px] bg-blend-darken text-white"
              style="background: rgba(0,0,0,0.9) url('{{ asset('images/header-2.jpg') }}') no-repeat center; background-size: cover">

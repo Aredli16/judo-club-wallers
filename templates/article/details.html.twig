@@ -1,6 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ article.title }}{% endblock %}
+{% block meta_description %}{{ article.metadesc }}{% endblock %}
+{% block meta %}
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ article.title }}">
+    <meta property="og:description" content="{{ article.metadesc }}">
+    <meta property="og:image" content="{{ asset('uploads/media/articles/content/' ~article.imageFileName) }}">
+    <meta property="og:site_name" content="Judo Club Wallers">
+    <meta property="og:url"
+          content="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}">
+{% endblock %}
+
 
 {% block body %}
     <div class="container flex">

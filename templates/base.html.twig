@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <title>{% block title %}Judo Club Wallers{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <title>{% block title %}Judo Club Wallers{% endblock %}</title>
+    <meta name="description"
+          content="{% block meta_description %}La Page d'acceuil ou vous pouvez retrouver l'histoire du club, les enseignants, son actualité ainsi que les derniers albums photos{% endblock %}">
+    <meta name="robots" content="all">
+    {% block meta %}
+    {% endblock %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -48,6 +53,7 @@
                 <span class="max-md:transition-opacity"></span>
                 <span class="transition-transform max-md:-translate-y-[7px]"></span>
             </button>
+
 
             <a class="max-md:mx-auto" href="{{ path('app_home') }}"><img class="h-10"
                                                                          src="{{ asset('images/logo.png') }}"

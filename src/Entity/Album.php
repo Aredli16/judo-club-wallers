@@ -21,6 +21,9 @@ class Album
     #[ORM\Column(length: 255)]
     private ?string $slug = '';
 
+    #[ORM\Column(length: 200)]
+    private ?string $metadesc = '';
+
     #[ORM\Column(options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $created_at;
 
@@ -60,6 +63,17 @@ class Album
         $this->slug = $slug;
 
         return $this;
+    }
+
+
+    public function getMetadesc(): ?string
+    {
+        return $this->metadesc;
+    }
+
+    public function setMetadesc(?string $metadesc): void
+    {
+        $this->metadesc = $metadesc;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable

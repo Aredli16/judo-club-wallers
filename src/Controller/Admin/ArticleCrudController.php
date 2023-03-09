@@ -24,6 +24,8 @@ class ArticleCrudController extends AbstractCrudController
             TextField::new('title'),
             TextEditorField::new('content')
                 ->onlyOnForms(),
+            TextField::new('metadesc')
+                ->onlyOnForms(),
             TextField::new('author')
                 ->setDisabled(),
             DateTimeField::new('createdAt')

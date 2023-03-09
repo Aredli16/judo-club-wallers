@@ -1,6 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ album.title }}{% endblock %}
+{% block meta_description %}{{ album.metadesc }}{% endblock %}
+{% block meta %}
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:type" content="album">
+    <meta property="og:title" content="{{ album.title }}">
+    <meta property="og:description" content="{{ album.metadesc }}">
+    <meta property="og:image" content="{{ asset('uploads/media/albums/content/' ~ album.content.get(0).filename) }}">
+    <meta property="og:site_name" content="Judo Club Wallers">
+    <meta property="og:url"
+          content="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}">
+{% endblock %}
 
 {% block body %}
     <section class="relative h-[40vh] bg-blend-darken text-white overflow-hidden"
